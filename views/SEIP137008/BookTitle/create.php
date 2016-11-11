@@ -84,38 +84,42 @@ use App\Utility\Utility;
                 </div>
 
                 <?php echo Message::getMessage() ?>
-                <form class="form-horizontal" action="store.php" method="post">
+                <form class="form-horizontal my-form " action="store.php" method="post">
+                    <fieldset>
+                       <legend>Add Book Information</legend>
+
                     <div class="form-group">
                         <label for="book_title" class="col-sm-2 control-label">Title</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="book_title" name="book_title" placeholder="Book Title">
+                            <input type="text" class="form-control" id="book_title" name="book_title" placeholder="Book Title" required autofocus>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="author_name" class="col-sm-2 control-label">Author Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="author_name" name="author_name" placeholder="Author Name">
+                            <input type="text" class="form-control" id="author_name" name="author_name" placeholder="Author Name" required autofocus>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="book_isbn" class="col-sm-2 control-label">ISBN</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="book_isbn" name="book_isbn" placeholder="ISBN">
+                            <input type="text" class="form-control" id="book_isbn" name="book_isbn" placeholder="ISBN" required autofocus>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="book_info" class="col-sm-2 control-label">Book Info</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="book_info" name="book_info" placeholder="Book Info">
+                            <input type="text" class="form-control" id="book_info" name="book_info" placeholder="Book Info" required autofocus>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <input type="submit" class="btn btn-success" value="submit">
+                            <input type="submit" class="btn btn-success" value="Save">
                             <input type="reset" class="btn btn-danger" value="reset">
                         </div>
                     </div>
+                    </fieldset>
                 </form>
 
             </div>
