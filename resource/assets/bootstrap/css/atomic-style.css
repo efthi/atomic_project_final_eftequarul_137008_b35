@@ -1,5 +1,31 @@
+/*
+* Stylesheet fo Atomic Project
+*
+*By Efthaqur Alam
+*
+*/
 
+/* Google font from local directory */
+/*@font-face {
+    font-family: 'Shrikhand', cursive;
+    url('localhos/resource/assets/google-fonts/Shirkhand-Regulatr.ttf');
+}
+@font-face {
+    font-family: 'Merriweather', serif;
+    url('resources/assets/google-fonts/Merriweather-Regular.ttf');
+}
 
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    url('resources/assets/google-fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Lobster', cursive;
+    url('resources/assets/google-fonts/Lobster-Regular.ttf');
+}*/
+
+/*Body Styles */
 
 body{
     background-color:#D1E7C6;
@@ -21,9 +47,19 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c4deb4', endColorstr='#c4deb4', GradientType=1 );
 }
 
+
+/*Header Styles here*/
 .header{
     max-width: 100%;
     background-color: #90CEBD;
+}
+
+.project-heading{
+    font-family: 'Shrikhand', cursive;
+}
+
+.project-sub-heading{
+    font-family: 'Lobster', cursive;
 }
 
 .logo{
@@ -38,6 +74,7 @@ body{
 
 }
 
+
 /*Panel Color Modified */
 .panel-success {
     background-color: #D1E7C6;
@@ -49,10 +86,12 @@ body{
 }
 .info-panel{
     color:#000;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    font-style: italic;
 }
 
+
+/* Sidebar Styles */
 .sidebar {
 
 }
@@ -90,6 +129,7 @@ body{
     background-color: #D1E7C6;;
 }
 
+/* */
  .category-image{
     opacity: 0.5;
     filter: alpha(opacity=50); /* For IE8 and earlier */
@@ -132,6 +172,7 @@ td,th {
     border: solid 2px #0f0f0f;
     width: 100%;
     height: 60px;
+    font-family: 'Merriweather', serif;
 
 }
 

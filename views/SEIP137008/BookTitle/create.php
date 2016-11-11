@@ -18,7 +18,7 @@ use App\Utility\Utility;
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="../../../resource/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../resource/assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../resource/assets/css/form-elements.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather|Montserrat|Shrikhand" rel="stylesheet">
     <link rel="stylesheet" href="../../../resource/assets/bootstrap/css/atomic-style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -38,8 +38,8 @@ use App\Utility\Utility;
                 <img src="../../../resource/assets/img/logo/book-title.png" alt="..." class="img-rounded">
             </div>
             <div class="header-info col-md-4">
-                <h2>Atomic Project</h2>
-                <h3>SEIP 137008 B35 Web Application PHP</h3>
+                <h2 class="project-heading">Atomic Project</h2>
+                <h3 class="project-sub-heading'">SEIP 137008 B35 Web Application PHP</h3>
             </div>
             <div class="user-img .col-md-4">
                 <img src="../../../resource/assets/img/user-img.jpg" alt="..."  class="img-circle size">
@@ -86,7 +86,7 @@ use App\Utility\Utility;
                 <?php echo Message::getMessage() ?>
                 <form class="form-horizontal my-form " action="store.php" method="post">
                     <fieldset>
-                       <legend>Add Book Information</legend>
+                       <legend class="project-sub-heading">Add Book Information</legend>
 
                     <div class="form-group">
                         <label for="book_title" class="col-sm-2 control-label">Title</label>

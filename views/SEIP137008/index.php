@@ -9,11 +9,10 @@
     <title>Atomic Project</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="http://fonts....googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="../../resource/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resource/assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../resource/assets/css/form-elements.css">
-    <!--    <link rel="stylesheet" href="../../resource/assets/css/style.css">-->
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather|Montserrat|Shrikhand" rel="stylesheet">
     <link rel="stylesheet" href="../../resource/assets/bootstrap/css/atomic-style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,8 +35,8 @@
                 <img src="../../resource/assets/img/atomiclogo.png" alt="..." class="img-responsive">
             </div>
             <div class="header-info col-md-8">
-                <h2>Atomic Project</h2>
-                <h3>SEIP 137008 B35 Web Application PHP</h3>
+                <h2 class="project-heading">Atomic Project</h2>
+                <h3 class="project-sub-heading">SEIP 137008 B35 Web Application PHP</h3>
             </div>
         </div>
     </div>
