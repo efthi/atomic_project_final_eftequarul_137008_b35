@@ -32,7 +32,8 @@
 <div class="jumbotron header">
     <div class="row">
         <div class="logo col-md-4 ">
-            <img src="../../resource/assets/img/atomiclogo.png" alt="..." class="img-responsive">
+            <i class="fa fa-birthday-cake fa-5x" aria-hidden="true"></i>
+            <img src="../../resource/assets/img/atomiclogo2.png" alt="..." class="img-responsive">
         </div>
         <div class="header-info col-md-4">
             <h2 class="project-heading">Atomic Project</h2>
@@ -46,35 +47,37 @@
 
 <hr class="hr-divider">
 <div role="alert" class="alert alert-info">
-    <strong>Welcome!!</strong> Choose one form the category below by clicking image <span class="glyphicon glyphicon-arrow-down"></span>
-    Click here <span class="glyphicon glyphicon-arrow-right"></span> <a href="" class="btn btn-warning" >Log Out!</a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Welcome!!</strong> Choose one form the category below by clicking image <span class="glyphicon glyphicon-arrow-down"></span>
+    Click here <span class="glyphicon glyphicon-arrow-right"></span> <a href="index.php" class="btn btn-warning" >Log Out!</a>
 </div>
 <hr class="hr-divider">
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
-            <a href="BookTitle/index.php">
-                <img src="../../resource/assets/img/category-image/book-title.png" alt="..." class="img-responsive img-rounded category-image">
-                <span class="category-heading label label-success">Book tittle</span>
+            <a href="BookTitle/index.php" >
+                <img src="../../resource/assets/img/category-image/book-title.png" alt="..." class="img-responsive img-rounded category-image center-block">
+                <span class="category-heading btn btn-success">Book tittle</span>
             </a>
         </div>
         <div class="col-md-3">
             <a href="Birthday/index.php">
-                <img src="../../resource/assets/img/category-image/birthdate.jpg" alt="..." class="img-responsive img-rounded category-image">
-                <span class="category-heading label label-success">Birthdate</span>
+                <i class="fa fa-birthday-cake fa-5x" aria-hidden="true"></i>
+
+                <!--                <img src="../../resource/assets/img/category-image/birthdate.jpg" alt="..." class="img-responsive img-rounded category-image center-block ">-->
+                <span class="category-heading btn btn-success">Birthdate</span>
             </a>
         </div>
         <div class="col-md-3">
             <a href="City/index.php">
-                <img src="../../resource/assets/img/category-image/city.jpg" alt="..." class="img-responsive img-rounded category-image">
-                <span class="category-heading label label-success">City</span>
+                <img src="../../resource/assets/img/category-image/city.jpg" alt="..." class="img-responsive img-rounded category-image center-block">
+                <span class="category-heading btn btn-success">City</span>
             </a>
         </div>
         <div class="col-md-3">
             <a href="Email/index.php">
-                <img src="../../resource/assets/img/category-image/email.jpg" alt="..." class="img-responsive img-rounded category-image">
-                <span class="category-heading label label-success">Email</span>
+                <img src="../../resource/assets/img/category-image/email.jpg" alt="..." class="img-responsive img-rounded category-image center-block">
+                <span class="category-heading btn btn-success">Email</span>
             </a>
         </div>
     </div>
@@ -82,26 +85,26 @@
     <div class="row">
         <div class="col-md-3">
             <a href="Gender/index.php">
-                <img src="../../resource/assets/img/category-image/gender.jpg" alt="..." class="img-responsive img-rounded category-image">
-                <span class="category-heading label label-success">Gender</span>
+                <img src="../../resource/assets/img/category-image/gender.jpg" alt="..." class="img-responsive img-rounded category-image center-block">
+                <span class="category-heading btn btn-success">Gender</span>
             </a>
         </div>
         <div class="col-md-3">
             <a href="Hobbies/index.php">
-                <img src="../../resource/assets/img/category-image/hobbies.png" alt="..." class="img-responsive img-rounded category-image">
-                <span class="category-heading label label-success">Hobbies</span>
+                <img src="../../resource/assets/img/category-image/hobbies.png" alt="..." class="img-responsive img-rounded category-image center-block">
+                <span class="category-heading btn btn-success">Hobbies</span>
             </a>
         </div>
         <div class="col-md-3">
             <a href="ProfilePicture/index.php">
-                <img src="../../resource/assets/img/category-image/profile-picture.png" alt="..." class="img-responsive img-rounded category-image">
-                <span class="category-heading label label-success">Profile Picture</span>
+                <img src="../../resource/assets/img/category-image/profile-picture.png" alt="..." class="img-responsive img-rounded category-image center-block">
+                <span class="category-heading btn btn-success">Profile Picture</span>
             </a>
         </div>
         <div class="col-md-3">
             <a href="SummaryOfOrganization/index.php">
-                <img src="../../resource/assets/img/category-image/summary-of-org.jpg" alt="..." class="img-responsive img-rounded category-image">
-                <span class="category-heading label label-success">Summary of Organization</span>
+                <img src="../../resource/assets/img/category-image/summary-of-org.jpg" alt="..." class="img-responsive img-rounded category-image center-block">
+                <span class="category-heading btn btn-success">Summary of Organization</span>
             </a>
         </div>
     </div>

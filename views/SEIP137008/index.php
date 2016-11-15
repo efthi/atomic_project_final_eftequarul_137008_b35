@@ -51,24 +51,32 @@
                 <div class="panel panel-success">
                     <div class="panel-heading"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
                         Atomic Project</div>
-                    <p class="info-panel text-center">This is Atomic project Created by MD. Eftequarul Alam,
+                    <p class="info-panel text-left fade-in one">This is Atomic project Created by MD. Eftequarul Alam,
                     SEIP 137008 BITM BATCH 35, Web Application with PHP.
                     The main objective of this project is to connect database
                         using object oriented PHP programming and understanding and implementation of CRUD.
-                    This project covers 8 type of information storing, retrieving, editing and deleting data form database
-                        and presenting to user.
+                    This project covers 8 type of information storing, retrieving, editing and deleting data.<br>
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Book Title <br>
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Birthday <br>
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>City <br>
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Email <br>
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Gender <br>
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Hobbies <br>
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Profile Picture <br>
+                        <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Summary of Organization <br>
+
 
                     </p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="panel panel-success">
+                <div class="panel panel-success text-center fade-in two">
                     <div class="panel-heading"><i class="fa fa-spinner fa-spin fa-1x fa-fw"></i> Login</div>
-                        <form class="form-signin">
+                        <form class="form-signin" >
                             <h2 class="form-signin-heading">Please sign in</h2>
-                            <label for="inputEmail" class="sr-only">Email address</label>
+                            <label for="inputEmail" >Email address</label>
                             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                            <label for="inputPassword" class="sr-only">Password</label>
+                            <label for="inputPassword" >Password</label>
                             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                             <div class="checkbox">
                                 <label>
@@ -81,7 +89,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="panel panel-success">
+                <div class="panel panel-success fade-in three">
                     <div class="panel-heading"><i class="fa fa-shield"></i> Supervised By</div>
                     <img src="../../resource/assets/img/supervisor/masum_sir.png" alt="" class="img-responsive img-circle center-block">
                     <p class="info-panel">Abu Zayed Hasnain Masum </p>

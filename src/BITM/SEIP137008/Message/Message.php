@@ -1,7 +1,7 @@
 <?php
 namespace App\Message;
 
-if(!isset( $_SESSION)) session_start();
+if(!isset($_SESSION)) session_start();
 
 
 class Message{

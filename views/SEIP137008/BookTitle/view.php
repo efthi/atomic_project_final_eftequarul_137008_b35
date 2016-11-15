@@ -89,50 +89,17 @@ $msg = Message::getMessage();
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4 ">
-                                <?php echo $msg ?>
-                            </div>
+                        <div class="view-style center-block">
+                          <h4 class="project-sub-heading">View Information</h4>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
                         </div>
-                        <form class="form-horizontal my-form " action="store.php" method="post">
-                            <fieldset>
-                                <legend class="project-sub-heading">Add Book Information</legend>
-
-                                <div class="form-group">
-                                    <label for="book_title" class="col-sm-2 control-label">Title</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="book_title" name="book_title" placeholder="Book Title" required autofocus>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="author_name" class="col-sm-2 control-label">Author Name</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="author_name" name="author_name" placeholder="Author Name" required autofocus>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="book_isbn" class="col-sm-2 control-label">ISBN</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="book_isbn" name="book_isbn" placeholder="ISBN" required autofocus>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="book_info" class="col-sm-2 control-label">Book Info</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="book_info" name="book_info" placeholder="Book Info" required autofocus>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <input type="submit" class="btn btn-success" value="Save">
-                                        <input type="reset" class="btn btn-danger" value="reset">
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
                     </div>
                 </div>
+
+
 
             </div>
         </div>
@@ -158,9 +125,6 @@ $msg = Message::getMessage();
 <script src="../../../resource/assets/bootstrap/js/bootstrap.min.js"></script>
 
 <script>
-    $("#alertmsg").fadeTo(2000, 500).slideUp(500, function(){
-        $("#alertmsg").slideUp(500);
-    });
 
     $("#button-sidebar").click(function(){
         $("#sidebar-ctrl").toggle();

@@ -6,7 +6,7 @@ use PDOException;
 
 class Database
 {
-    public $DBH; // DataBase Handeller
+    public $DBH; // DataBase Handler
     public $host="localhost";
     public $dbname="atomic_project_b35_ea";
     public $dbuser="root";

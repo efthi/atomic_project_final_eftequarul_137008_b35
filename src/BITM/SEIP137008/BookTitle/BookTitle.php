@@ -15,6 +15,10 @@ class BookTitle extends DB
     public $book_info="";
     public $book_isbn="";
 
+    public function __construct(){
+        parent::__construct();
+        if(!isset($_SESSION)) session_start();
+    }
 
     public function index(){
         echo "This is from BookTitle Class!";
@@ -49,15 +53,16 @@ class BookTitle extends DB
         $arrData = array($this->book_name,$this->author_name,$this->book_isbn, $this->book_info);
         $sql = "Insert INTO book_title(book_name, author_name, book_isbn, book_info ) VALUES (? , ? , ? , ?)";
 
-        $result= $STH = $this->DBH->prepare($sql); //$STH=Statement Handle
+        $STH = $this->DBH->prepare($sql); //$STH=Statement Handler
 
-        $STH->execute($arrData);
+        $result=$STH->execute($arrData);
 
         if($result)
-                Message::setMessage("<div class=\"alert alert-info\" id=\"success-alert\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button><strong>Success! </strong> Data stored!
+                Message::setMessage("<div class=\"alert alert-info\" id=\"alertmsg\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button><strong>Success! </strong> Data stored!
 </div>");
         else
-                Message::setMessage("Failed! Data has been inserted successfully!");
+                Message::setMessage("<div class=\"alert alert-danger\" id=\"alertmsg\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button><strong>Failed! </strong> Data not stored!
+</div>");
 
             Utility::redirect('create.php');
 

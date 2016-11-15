@@ -6,24 +6,37 @@
 */
 
 /* Google font from local directory */
+
 /*@font-face {
-    font-family: 'Shrikhand', cursive;
-    url('localhos/resource/assets/google-fonts/Shirkhand-Regulatr.ttf');
+    font-family:'Shrikhand', cursive;
+    url('../fonts/Shrikhand-Regular.ttf');
 }
+
 @font-face {
     font-family: 'Merriweather', serif;
-    url('resources/assets/google-fonts/Merriweather-Regular.ttf');
+    url('../fonts/Merriweather-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Montserrat', sans-serif;
-    url('resources/assets/google-fonts/Montserrat-Regular.ttf');
+    url('../fonts/Montserrat-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Lobster', cursive;
-    url('resources/assets/google-fonts/Lobster-Regular.ttf');
+    url('../fonts/Lobster-Regular.ttf');
+}
+
+.fonttest{
+    font-family: 'Merriweather', serif;
+    color: #b92c28;
+}
+
+@font-face {
+    font-family:'Shrikhand', cursive;
+url('../fonts/Shrikhand-Regular.ttf');
 }*/
+
 
 /*Body Styles */
 
@@ -37,14 +50,15 @@ body{
     background-attachment: scroll;
 }
 .wrapper {
-    background: rgba(196,222,180,1);
+/*    background: rgba(196,222,180,1);
     background: -moz-linear-gradient(left, rgba(196,222,180,1) 0%, rgba(239,246,235,1) 47%, rgba(225,238,217,0.99) 52%, rgba(210,230,198,0.99) 71%, rgba(196,222,180,0.99) 100%);
     background: -webkit-gradient(left top, right top, color-stop(0%, rgba(196,222,180,1)), color-stop(47%, rgba(239,246,235,1)), color-stop(52%, rgba(225,238,217,0.99)), color-stop(71%, rgba(210,230,198,0.99)), color-stop(100%, rgba(196,222,180,0.99)));
     background: -webkit-linear-gradient(left, rgba(196,222,180,1) 0%, rgba(239,246,235,1) 47%, rgba(225,238,217,0.99) 52%, rgba(210,230,198,0.99) 71%, rgba(196,222,180,0.99) 100%);
     background: -o-linear-gradient(left, rgba(196,222,180,1) 0%, rgba(239,246,235,1) 47%, rgba(225,238,217,0.99) 52%, rgba(210,230,198,0.99) 71%, rgba(196,222,180,0.99) 100%);
     background: -ms-linear-gradient(left, rgba(196,222,180,1) 0%, rgba(239,246,235,1) 47%, rgba(225,238,217,0.99) 52%, rgba(210,230,198,0.99) 71%, rgba(196,222,180,0.99) 100%);
     background: linear-gradient(to right, rgba(196,222,180,1) 0%, rgba(239,246,235,1) 47%, rgba(225,238,217,0.99) 52%, rgba(210,230,198,0.99) 71%, rgba(196,222,180,0.99) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c4deb4', endColorstr='#c4deb4', GradientType=1 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c4deb4', endColorstr='#c4deb4', GradientType=1 );*/
+
 }
 
 
@@ -52,6 +66,14 @@ body{
 .header{
     max-width: 100%;
     background-color: #90CEBD;
+    background: -moz-radial-gradient(center, ellipse cover, #4FFFF0 25%, #4FFFF0 32%, #90CEBD 100%); /* ff3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(25%, #4FFFF0), color-stop(32%, #4FFFF0), color-stop(100%, #90CEBD)); /* safari4+,chrome */
+    background: -webkit-radial-gradient(center, ellipse cover, #4FFFF0 25%, #4FFFF0 32%, #90CEBD 100%); /* safari5.1+,chrome10+ */
+    background: -o-radial-gradient(center, ellipse cover, #4FFFF0 25%, #4FFFF0 32%, #90CEBD 100%); /* opera 11.10+ */
+    background: -ms-radial-gradient(center, ellipse cover, #4FFFF0 25%, #4FFFF0 32%, #90CEBD 100%); /* ie10+ */
+    background: radial-gradient(ellipse at center, #4FFFF0 25%, #4FFFF0 32%, #90CEBD 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4FFFF0', endColorstr='#90CEBD',GradientType=0 ); /* ie6-9 */
+
 }
 
 .project-heading{
@@ -106,7 +128,7 @@ body{
     font-weight: bold;
 }
 .atomic-side-nav>li>a:hover {
-    background-color: #C7E1C5;
+    background-color: #569B62; /*#C7E1C5; */
     color: #000000;
     font-weight: bold;
 }
@@ -127,6 +149,11 @@ body{
 
 .nav-msg{
     background-color: #D1E7C6;;
+}
+
+.control-link{
+    color: #ffffff;
+    font-weight: bold;
 }
 
 /* */
@@ -164,7 +191,11 @@ td,th {
     vertical-align:middle;
 }
 
+/* View Style */
+.view-style{
+    display: table;
 
+}
 
 /* Footer Style  */
 .footer{
@@ -176,9 +207,71 @@ td,th {
 
 }
 
-.my-form
-{
+.my-form {
     background-color: rgba(206,228,193,0.5);
     border: 2px inset #CEE4C1;
 
+}
+
+
+
+
+
+
+
+
+/* CSS Animation Code*/
+.ani {
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        margin-top: 100%;
+/*        width: 300%;*/
+    }
+
+    to {
+        margin-bottom: 0%;
+/*        width: 100%;*/
+    }
+}
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+}
+
+.fade-in.one {
+    -webkit-animation-delay: 0.7s;
+    -moz-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+
+.fade-in.two {
+    -webkit-animation-delay: 1.2s;
+    -moz-animation-delay:1.2s;
+    animation-delay: 1.2s;
+}
+
+.fade-in.three {
+    -webkit-animation-delay: 1.6s;
+    -moz-animation-delay: 1.6s;
+    animation-delay: 1.6s;
 }

@@ -1,3 +1,9 @@
+<?php
+require_once("../../../vendor/autoload.php");
+use App\Message\Message;
+use App\Utility\Utility;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,14 +12,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Login Form Template</title>
+    <title>Atomic Project</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="../../../resource/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../resource/assets/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../resource/assets/css/form-elements.css">
-    <link rel="stylesheet" href="../../../resource/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather|Montserrat|Shrikhand" rel="stylesheet">
+    <link rel="stylesheet" href="../../../resource/assets/bootstrap/css/atomic-style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,90 +28,135 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="../../../resource/assets/ico/favicon.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../resource/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../resource/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../resource/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../../../resource/assets/ico/apple-touch-icon-57-precomposed.png">
-
 </head>
 
 <body>
-
-<!-- Top content -->
-<div class="top-content">
-
-    <div class="inner-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1><strong>Bootstrap</strong> Login Form</h1>
-                    <div class="description">
-                        <p>
-                            This is a free responsive login form made with Bootstrap.
-                            Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!
-                        </p>
-                    </div>
-                </div>
+<div class="container-fluid wrapper">
+    <div class="jumbotron header">
+        <div class="row">
+            <div class="logo col-md-4 ">
+                <img src="../../../resource/assets/img/logo/book-title.png" alt="..." class="img-rounded">
             </div>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 form-box">
-                    <div class="form-top">
-                        <div class="form-top-left">
-                            <h3>Login to our site</h3>
-                            <p>Enter your username and password to log on:</p>
-                        </div>
-                        <div class="form-top-right">
-                            <i class="fa fa-lock"></i>
-                        </div>
-                    </div>
-                    <div class="form-bottom">
-                        <form role="form" action="" method="post" class="login-form">
-                            <div class="form-group">
-                                <label class="sr-only" for="form-username">Username</label>
-                                <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="form-password">Password</label>
-                                <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
-                            </div>
-                            <button type="submit" class="btn">Sign in!</button>
-                        </form>
-                    </div>
-                </div>
+            <div class="header-info col-md-4">
+                <h2 class="project-heading">Atomic Project</h2>
+                <h3 class="project-sub-heading'">SEIP 137008 B35 Web Application PHP</h3>
             </div>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 social-login">
-                    <h3>...or login with:</h3>
-                    <div class="social-login-buttons">
-                        <a class="btn btn-link-2" href="#">
-                            <i class="fa fa-facebook"></i> Facebook
-                        </a>
-                        <a class="btn btn-link-2" href="#">
-                            <i class="fa fa-twitter"></i> Twitter
-                        </a>
-                        <a class="btn btn-link-2" href="#">
-                            <i class="fa fa-google-plus"></i> Google Plus
-                        </a>
+            <div class="user-img .col-md-4">
+                <img src="../../../resource/assets/img/user-img.jpg" alt="..."  class="img-circle size">
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="hr-divider">
+    <hr class="hr-divider">
+    <div class="container-fluid wrapper">
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="nav atomic-side-nav nav-pills nav-stacked ">
+                    <li role="presentation"><a href="../atomic_project.php">Menu</a></li>
+                    <li role="presentation" class="active"><a href="#">Book Title <span class="glyphicon glyphicon-play"></span> </a></li>
+                    <li role="presentation"><a href="../BookTitle/index.php">Birthdate</a></li>
+                    <li role="presentation"><a href="../City/index.php">City</a></li>
+                    <li role="presentation"><a href="../Email/index.php">Email</a></li>
+                    <li role="presentation"><a href="../Gender/index.php">Gender</a></li>
+                    <li role="presentation"><a href="../Hobbies/index.php">Hobbies</a></li>
+                    <li role="presentation"><a href="../ProfilePicture/index.php">Profile Picture</a></li>
+                    <li role="presentation"><a href="../SummaryOfOrganization/index.php">Summary of Organization</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10 ">
+                <div class="atomic-nav">
+                    <div class="navbar">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <span class="navbar-brand">Control</span>
+                            </div>
+                            <div class="btn-group-lg nav navbar-nav" role="group" aria-label="...">
+                                <a href="create.php" class="navbar-btn btn btn-info">Add Item</a>
+                                <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
+                                <a href="" class="navbar-btn btn btn-success">PDF Download</a>
+                                <a href="" class="navbar-btn btn btn-primary">Log out</a>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+
+                <?php echo Message::getMessage() ?>
+                <form class="form-horizontal my-form " action="store.php" method="post">
+                    <fieldset>
+                        <legend class="project-sub-heading">Add Book Information</legend>
+
+                        <div class="form-group">
+                            <label for="book_title" class="col-sm-2 control-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="book_title" name="book_title" placeholder="Book Title" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="author_name" class="col-sm-2 control-label">Author Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="author_name" name="author_name" placeholder="Author Name" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="book_isbn" class="col-sm-2 control-label">ISBN</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="book_isbn" name="book_isbn" placeholder="ISBN" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="book_info" class="col-sm-2 control-label">Book Info</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="book_info" name="book_info" placeholder="Book Info" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" class="btn btn-success" value="Save">
+                                <input type="reset" class="btn btn-danger" value="reset">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
             </div>
         </div>
     </div>
-
+    <hr class="hr-divider">
+    <div class="footer">
+        <div class="row">
+            <div class="header-info col-md-6">
+                <h4>Atomic Project</h4>
+                <h5> &copy; 2016 Reserved By Efthaqur Alam</h5>
+            </div>
+            <div class="user-img col-md-6">
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 
 <!-- Javascript -->
 <script src="../../../resource/assets/js/jquery-1.11.1.min.js"></script>
 <script src="../../../resource/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../../resource/assets/js/jquery.backstretch.min.js"></script>
-<script src="../../../resource/assets/js/scripts.js"></script>
 
-<!--[if lt IE 10]>
-<script src="../../../assets/js/placeholder.js"></script>
-<![endif]-->
+<script>
+    $("#alertmsg").fadeTo(2000, 500).slideUp(500, function(){
+        $("#alertmsg").slideUp(500);
+    });
+
+</script>
+<script>
+
+</script>
+
+
+
 
 </body>
 
