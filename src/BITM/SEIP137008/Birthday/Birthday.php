@@ -15,6 +15,12 @@ class Birthday extends DB
         echo "Im inside index method of Birthday!";
     }
 
+    public function view(){
+
+    }
+
+
+
 }
 
 
