@@ -7,6 +7,7 @@ use App\Utility\Utility;
 $objbooktitle = new BookTitle();
 $allData = $objbooktitle->index('obj');
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +82,7 @@ $allData = $objbooktitle->index('obj');
                                 <span class="navbar-brand"> <a href="#" id="button-sidebar" class="control-link"><span class="glyphicon glyphicon-chevron-left" ></span></a>
                                  <span class="control-link">Control</span><a href="#" id="button-navbar" class="control-link"><span class="glyphicon glyphicon-chevron-right" ></span></a>
                                     </div>
-                                    <div class="btn-group-sm nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
+                                    <div class="nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
                                             <a href="create.php" class="navbar-btn btn btn-info" >Add Item</a>
                                             <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
                                             <a href="" class="navbar-btn btn btn-success">PDF Download</a>
@@ -102,6 +103,7 @@ $allData = $objbooktitle->index('obj');
                                     <th>Action</th>
                                 </tr>
                                 <?php
+
                                 $serial = 1;
                                 foreach($allData as $oneData){
                                     echo "<tr>";
