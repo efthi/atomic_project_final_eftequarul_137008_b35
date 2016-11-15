@@ -192,9 +192,14 @@ td,th {
 }
 
 /* View Style */
-.view-style{
-    display: table;
 
+.view-style{
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+}
+
+.view-line{
+    text-decoration: underline;
 }
 
 /* Footer Style  */

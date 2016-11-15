@@ -1,8 +1,14 @@
 <?php
+
 require_once("../../../vendor/autoload.php");
-use App\Message\Message;
-use App\Utility\Utility;
-$msg = Message::getMessage();
+
+use App\BookTitle\BookTitle;
+
+$objBookTitle = new BookTitle();
+
+$objBookTitle->setData($_GET);
+
+$oneData = $objBookTitle->view("obj");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,10 +82,10 @@ $msg = Message::getMessage();
                                 <span class="navbar-brand"> <a href="#" id="button-sidebar" class="control-link"><span class="glyphicon glyphicon-chevron-left" ></span></a>
                                  <span class="control-link">Control</span><a href="#" id="button-navbar" class="control-link"><span class="glyphicon glyphicon-chevron-right" ></span></a>
                                     </div>
-                                    <div class="btn-group-lg nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
+                                    <div class=" nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
                                         <a href="create.php" class="navbar-btn btn btn-info">Add Item</a>
-                                        <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
-                                        <a href="" class="navbar-btn btn btn-success">PDF Download</a>
+                                        <a href="index.php" class="navbar-btn btn btn-warning">Go Back</a>
+                                        <a href="" class="navbar-btn btn btn-success">Print</a>
                                         <a href="" class="navbar-btn btn btn-primary">Log out</a>
 
                                     </div>
@@ -89,12 +95,33 @@ $msg = Message::getMessage();
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="view-style center-block">
-                          <h4 class="project-sub-heading">View Information</h4>
-                            <p></p>
-                            <p></p>
-                            <p></p>
-                            <p></p>
+                        <div class="">
+                            <div class="panel panel-success">
+                                <div class="panel-heading"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    Book Information</div>
+                                <p class="text-left view-style fade-in one">
+                                    <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    <span class="view-line">ID </span><span class="glyphicon glyphicon-arrow-right"></span>
+                                    <?php echo $oneData->id."<br>"?>
+                                    <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    <span class="view-line">Book title </span><span class="glyphicon glyphicon-arrow-right"></span>
+                                    <?php echo $oneData->book_name."<br>"?>
+
+                                    <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    <span class="view-line">Author Name </span><span class="glyphicon glyphicon-arrow-right"></span>
+                                    <?php echo $oneData->author_name."<br>"?>
+
+                                    <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    <span class="view-line">ISBN </span><span class="glyphicon glyphicon-arrow-right"></span>
+                                    <?php echo $oneData->book_isbn."<br>"?>
+
+                                    <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    <span class="view-line">Book Info </span><span class="glyphicon glyphicon-arrow-right"></span>
+                                    <?php echo $oneData->book_info."<br>"?>
+                                    <a href="edit.php" class="btn btn-info">Edit</a>
+                                    <a href="delete.php" class="btn btn-danger">Delete</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

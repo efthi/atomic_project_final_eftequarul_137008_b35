@@ -17,7 +17,7 @@ class Database
 
         try{
             $this->DBH = new PDO("mysql:host=$this->host; dbname=$this->dbname", $this->dbuser ,$this->dbpass);
-            echo "Connected successfully!(msg from database.php)<br>";
+            echo "Welcome! You're connected!!<br>";
         }
         catch(PDOException $error){
             $error->getMessage();

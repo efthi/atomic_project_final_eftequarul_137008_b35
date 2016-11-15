@@ -1,15 +1,16 @@
+<?php
+/*namespace App\BookTitle;
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../../resource/assets/bootstrap/css/atomic-style.css">
-    <title>Document</title>
-</head>
-<body>
-<h1 class="fonttest">Atomic Project</h1>
-</body>
-</html>
+use App\Model\Database as DB;
+use App\Message\Message;
+use App\Utility\Utility;
+$sql = "SELECT * FROM book_title(book_name, author_name) ";
+
+$STH = $this->DBH->prepare($sql); //$STH=Statement Handle
+
+echo $STH->execute($sql);*/
+
+$msg = "info";
+echo <<< EOT
+    $msg
+EOT;

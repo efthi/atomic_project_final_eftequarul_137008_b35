@@ -1,3 +1,13 @@
+<?php
+require_once("../../../vendor/autoload.php");
+use App\BookTitle\BookTitle;
+use App\Message\Message;
+use App\Utility\Utility;
+
+$objbooktitle = new BookTitle();
+$allData = $objbooktitle->index('obj');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +59,7 @@
     <div class="container-fluid wrapper">
         <div class="row">
             <div class="col-md-2">
-                <ul class="nav atomic-side-nav nav-pills nav-stacked ">
+                <ul class="nav atomic-side-nav nav-pills nav-stacked" id="sidebar-ctrl">
                     <li role="presentation"><a href="../atomic_project.php">Menu</a></li>
                     <li role="presentation" class="active"><a href="#">Book Title <span class="glyphicon glyphicon-play"></span> </a></li>
                     <li role="presentation"><a href="../BookTitle/index.php">Birthdate</a></li>
@@ -62,81 +72,77 @@
                 </ul>
             </div>
             <div class="col-md-10 ">
-                <div class="atomic-nav">
-                    <div class="navbar">
-                        <div class="container">
-                            <div class="navbar-header">
-                                <span class="navbar-brand">Control</span>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="atomic-nav">
+                            <div class="navbar">
+                                <div class="container">
+                                    <div class="navbar-header">
+                                <span class="navbar-brand"> <a href="#" id="button-sidebar" class="control-link"><span class="glyphicon glyphicon-chevron-left" ></span></a>
+                                 <span class="control-link">Control</span><a href="#" id="button-navbar" class="control-link"><span class="glyphicon glyphicon-chevron-right" ></span></a>
+                                    </div>
+                                    <div class="btn-group-sm nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
+                                            <a href="create.php" class="navbar-btn btn btn-info" >Add Item</a>
+                                            <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
+                                            <a href="" class="navbar-btn btn btn-success">PDF Download</a>
+                                            <a href="" class="navbar-btn btn btn-primary">Log out</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="btn-group-lg nav navbar-nav" role="group" aria-label="...">
-                            <a href="create.php" class="navbar-btn btn btn-info">Add Item</a>
-                            <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
-                            <a href="" class="navbar-btn btn btn-success">PDF Download</a>
-                            <a href="" class="navbar-btn btn btn-primary">Log out</a>
+
                         </div>
+                    </div>
+                    <div class="col-md-12">
+                            <table class="table table-bordered table-hover my-table-border my-td fade-in one">
+                                <tr class="active">
+                                    <th>Serial</th>
+                                    <th>ID</th>
+                                    <th>Book Title</th>
+                                    <th>Author</th>
+                                    <th>Action</th>
+                                </tr>
+                                <?php
+                                $serial = 1;
+                                foreach($allData as $oneData){
+                                    echo "<tr>";
+                                    echo "<td>$serial</td>";
+                                    echo "<td>$oneData->id</td>";
+                                    echo "<td>$oneData->book_name</td>";
+                                    echo "<td>$oneData->author_name</td>";
+                                    echo " <td>
+                                            <a href='view.php?id=$oneData->id' class='btn btn-info btn-sm'>View</a>
+                                            <a href='edit.php?id=$oneData->id' class='btn btn-primary btn-sm'>Edit</a>
+                                            <a href='delete.php?id=$oneData->id' class='btn btn-danger btn-sm'>Delete</a>
+                                            <a href='trash.php?id=$oneData->id' class='btn btn-warning btn-sm'>Trash</a>
+                                            </td>";
+                                    echo "</tr>";
+                                    $serial++;
+                                }
+
+
+                                ?>
+                                <tr class="info">
+                                    <td  colspan="5">PAGE:
+                                        <a href="#"><</a>
+                                        <a href="#">1</a>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#">4</a>
+                                        <a href="#">5</a>
+                                        <a href="#">6</a>
+                                        <a href="#">></a>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+
                     </div>
                 </div>
 
             </div>
-                <table class="table table-bordered table-hover my-table-border my-td">
-                    <tr class="active">
-                        <th>Serial</th>
-                        <th>ID</th>
-                        <th>Book Title</th>
-                        <th>Author</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>501</td>
-                        <td>SAM'S PHP in 24Hours</td>
-                        <td>SAM</td>
-                        <td>
-                            <input class="btn btn-info btn-sm" type="button" value="View">
-                            <input class="btn btn-primary btn-sm" type="button" value="Edit">
-                            <input class="btn btn-danger btn-sm" type="button" value="Delete">
-                            <input class="btn btn-warning btn-sm" type="button" value="Trash">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>335</td>
-                        <td>PHP for Beginners</td>
-                        <td>Steven Mcgrow</td>
-                        <td>
-                            <input class="btn btn-info btn-sm" type="button" value="View">
-                            <input class="btn btn-primary btn-sm" type="button" value="Edit">
-                            <input class="btn btn-danger btn-sm" type="button" value="Delete">
-                            <input class="btn btn-warning btn-sm" type="button" value="Trash">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>212</td>
-                        <td>Absolute PHP Practice</td>
-                        <td>Cris Derek</td>
-                        <td>
-                            <input class="btn btn-info btn-sm" type="button" value="View">
-                            <input class="btn btn-primary btn-sm" type="button" value="Edit">
-                            <input class="btn btn-danger btn-sm" type="button" value="Delete">
-                            <input class="btn btn-warning btn-sm" type="button" value="Trash">
-                        </td>
-                    </tr>
-                    <tr class="info">
-                        <td  colspan="5">PAGE:
-                            <a href="#"><</a>
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">></a>
-                        </td>
-                    </tr>
 
-                </table>
-            </div>
 
 
 
@@ -159,7 +165,15 @@
 <!-- Javascript -->
 <script src="../../../resource/assets/js/jquery-1.11.1.min.js"></script>
 <script src="../../../resource/assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $("#button-sidebar").click(function(){
+        $("#sidebar-ctrl").toggle();
+    });
+    $("#button-navbar").click(function(){
+        $("#navbar-ctrl").toggle();
+    });
 
+</script>
 
 
 </body>

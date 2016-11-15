@@ -5,7 +5,7 @@ namespace App\BookTitle;
 use App\Model\Database as DB;
 use App\Message\Message;
 use App\Utility\Utility;
-
+use PDO;
 
 class BookTitle extends DB
 {
@@ -20,10 +20,31 @@ class BookTitle extends DB
         if(!isset($_SESSION)) session_start();
     }
 
-    public function index(){
-        echo "This is from BookTitle Class!";
+    public function index($fetchMode='ASSOC'){
+        $sql ='SELECT * from book_title';
+        $STH= $this->DBH->query($sql);
+
+        $fetchMode = strtoupper($fetchMode);
+        if(substr_count($fetchMode,'OBJ')>0)
+            $STH->setFetchMode(PDO::FETCH_OBJ);
+        else
+            $STH->setFetchMode(PDO::FETCH_ASSOC);
+        $tableData = $STH->fetchAll();
+        return $tableData;
     }
 
+    public function view($fetchMode='ASSOC'){
+        $sql = 'SELECT * from book_title WHERE id='.$this->id;
+        $STH=$this->DBH->query($sql);
+
+        $fetchMode = strtoupper($fetchMode);
+        if(substr_count($fetchMode, 'OBJ') > 0)
+            $STH->setFetchMode(PDO::FETCH_OBJ);
+        else
+            $STH->setFetchMode(PDO::FETCH_ASSOC);
+        $tableData= $STH->fetch();
+        return $tableData;
+    }
 
     public function setData($postVariableData=NULL){
 

@@ -53,7 +53,6 @@ $msg = Message::getMessage();
     <div class="container-fluid wrapper">
         <div class="row">
             <div class="col-md-2">
-
                 <ul class="nav atomic-side-nav nav-pills nav-stacked " id="sidebar-ctrl">
                     <li role="presentation"><a href="../atomic_project.php">Menu</a></li>
                     <li role="presentation" class="active"><a href="#">Book Title <span class="glyphicon glyphicon-play"></span> </a></li>
@@ -76,10 +75,10 @@ $msg = Message::getMessage();
                                 <span class="navbar-brand"> <a href="#" id="button-sidebar" class="control-link"><span class="glyphicon glyphicon-chevron-left" ></span></a>
                                  <span class="control-link">Control</span><a href="#" id="button-navbar" class="control-link"><span class="glyphicon glyphicon-chevron-right" ></span></a>
                                     </div>
-                                    <div class="btn-group-lg nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
-                                        <a href="create.php" class="navbar-btn btn btn-info">Add Item</a>
+                                    <div class="btn-group-sm nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
+                                        <a href="index.php" class="navbar-btn btn btn-info">Index</a>
                                         <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
-                                        <a href="" class="navbar-btn btn btn-success">PDF Download</a>
+                                        <a href="../atomic_project.php" class="navbar-btn btn btn-success">Category Page</a>
                                         <a href="" class="navbar-btn btn btn-primary">Log out</a>
 
                                     </div>
@@ -90,7 +89,7 @@ $msg = Message::getMessage();
                     </div>
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-4 ">
+                            <div class="col-md-4 col-md-offset-4 ">
                                 <?php echo $msg ?>
                             </div>
                         </div>
