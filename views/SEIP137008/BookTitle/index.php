@@ -17,7 +17,7 @@ $allData = $objbooktitle->index('obj');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Atomic Project</title>
+    <title><?php echo  basename(__DIR__)." - Atomic Project" ?></title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -84,7 +84,7 @@ $allData = $objbooktitle->index('obj');
                                     </div>
                                     <div class="nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
                                             <a href="create.php" class="navbar-btn btn btn-info" >Add Item</a>
-                                            <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
+                                            <a href="trash-item.php" class="navbar-btn btn btn-warning">Trash Item</a>
                                             <a href="" class="navbar-btn btn btn-success">PDF Download</a>
                                             <a href="" class="navbar-btn btn btn-primary">Log out</a>
                                     </div>
@@ -94,13 +94,13 @@ $allData = $objbooktitle->index('obj');
                         </div>
                     </div>
                     <div class="col-md-12">
-                            <table class="table table-bordered table-hover my-table-border my-td fade-in one">
+                            <table class="table table-bordered table-hover table-responsive my-table-border my-td fade-in one">
                                 <tr class="active">
                                     <th>Serial</th>
                                     <th>ID</th>
                                     <th>Book Title</th>
                                     <th>Author</th>
-                                    <th>Action</th>
+                                    <th colspan="4">Action</th>
                                 </tr>
                                 <?php
 
@@ -113,9 +113,15 @@ $allData = $objbooktitle->index('obj');
                                     echo "<td>$oneData->author_name</td>";
                                     echo " <td>
                                             <a href='view.php?id=$oneData->id' class='btn btn-info btn-sm'>View</a>
+                                            </td>
+                                            <td>
                                             <a href='edit.php?id=$oneData->id' class='btn btn-primary btn-sm'>Edit</a>
-                                            <a href='delete.php?id=$oneData->id' class='btn btn-danger btn-sm'>Delete</a>
+                                            </td>
+                                            <td>
                                             <a href='trash.php?id=$oneData->id' class='btn btn-warning btn-sm'>Trash</a>
+                                            </td>
+                                            <td>
+                                            <a href='delete.php?id=$oneData->id' class='btn btn-danger btn-sm'>Delete</a>
                                             </td>";
                                     echo "</tr>";
                                     $serial++;
@@ -124,7 +130,7 @@ $allData = $objbooktitle->index('obj');
 
                                 ?>
                                 <tr class="info">
-                                    <td  colspan="5">PAGE:
+                                    <td  colspan="8">PAGE:
                                         <a href="#"><</a>
                                         <a href="#">1</a>
                                         <a href="#">2</a>
