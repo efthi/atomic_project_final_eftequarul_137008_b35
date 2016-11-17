@@ -63,8 +63,8 @@ class BookTitle extends DB
     }// end of store method
 
     public function index($fetchMode='ASSOC'){
-
-        $STH = $this->DBH->query('SELECT * from book_title');
+        $sql="SELECT * from book_title WHERE visible = 1";
+        $STH = $this->DBH->query($sql);
 
         $fetchMode = strtoupper($fetchMode);
         if(substr_count($fetchMode,'OBJ') > 0)
@@ -96,8 +96,49 @@ class BookTitle extends DB
 
     }// end of view();
 
+    public function update(){
 
+        $arrData = array($this->book_name,$this->author_name,$this->book_isbn, $this->book_info);
+        $sql = "UPDATE book_title SET book_name=?, author_name=?, book_isbn=?, book_info=? WHERE id=".$this->id;
 
+        $STH = $this->DBH->prepare($sql);
+        $STH->execute($arrData);
+        Utility::redirect('view.php?id='.$this->id);
+    }
+
+    public function delete(){
+
+        $sql='DELETE from book_title WHERE id='.$this->id;
+        $STH = $this->DBH->prepare($sql);
+        $STH->execute();
+        Utility::redirect('index.php');
+    }
+
+    public function trash(){
+        $sql = "UPDATE book_title SET visible=0 WHERE id=".$this->id;
+        $STH = $this->DBH->prepare($sql);
+        $STH->execute();
+        Utility::redirect('index.php');
+    }
+
+    public function trash_item($mode='ASSOC'){
+        $sql ="SELECT * from book_title WHERE visible = 0";
+        $STH = $this->DBH->query($sql);
+        $mode = strtoupper($mode);
+        if(substr_count($mode,'OBJ')>0)
+            $STH->setFetchMode(PDO::FETCH_OBJ);
+        else
+            $STH->setFetchMode(PDO::FETCH_ASSOC);
+        $trashData = $STH->fetchAll();
+        return $trashData;
+    }
+
+    public function reset_trash(){
+        $sql = "UPDATE book_title SET visible=1 WHERE id=".$this->id;
+        $STH = $this->DBH->prepare($sql);
+        $STH->execute();
+        Utility::redirect('index.php');
+    }
 
 }
 
