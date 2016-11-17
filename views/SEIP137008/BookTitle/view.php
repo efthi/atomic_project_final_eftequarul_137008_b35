@@ -9,6 +9,8 @@ $objBookTitle = new BookTitle();
 $objBookTitle->setData($_GET);
 
 $oneData = $objBookTitle->view("obj");
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,11 +61,10 @@ $oneData = $objBookTitle->view("obj");
     <div class="container-fluid wrapper">
         <div class="row">
             <div class="col-md-2">
-
                 <ul class="nav atomic-side-nav nav-pills nav-stacked " id="sidebar-ctrl">
                     <li role="presentation"><a href="../atomic_project.php">Menu</a></li>
-                    <li role="presentation" class="active"><a href="#">Book Title <span class="glyphicon glyphicon-play"></span> </a></li>
-                    <li role="presentation"><a href="../BookTitle/index.php">Birthdate</a></li>
+                    <li role="presentation" ><a href="../Birthday/index.php">Birthday  </a></li>
+                    <li role="presentation" class="active"><a href="#">Book Title <span class="glyphicon glyphicon-play"></span></a></li>
                     <li role="presentation"><a href="../City/index.php">City</a></li>
                     <li role="presentation"><a href="../Email/index.php">Email</a></li>
                     <li role="presentation"><a href="../Gender/index.php">Gender</a></li>

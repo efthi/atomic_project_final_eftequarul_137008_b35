@@ -1,7 +1,5 @@
 <?php
-
 namespace App\BookTitle;
-
 use App\Model\Database as DB;
 use App\Message\Message;
 use App\Utility\Utility;
@@ -21,59 +19,24 @@ class BookTitle extends DB
     }
 
 
-    public function index($fetchMode='ASSOC'){
+    public function setData($postData=NULL){
 
-        $STH = $this->DBH->query('SELECT * from book_title');
-
-        $fetchMode = strtoupper($fetchMode);
-        if(substr_count($fetchMode,'OBJ') > 0)
-            $STH->setFetchMode(PDO::FETCH_OBJ);
-        else
-            $STH->setFetchMode(PDO::FETCH_ASSOC);
-
-        $arrAllData  = $STH->fetchAll();
-        return $arrAllData;
-
-
-    }// end of index();
-
-
-    public function view($fetchMode='ASSOC'){
-
-        $sql ='SELECT * from book_title where id='.$this->id;
-        $STH = $this->DBH->query($sql);
-
-        $fetchMode = strtoupper($fetchMode);
-        if(substr_count($fetchMode,'OBJ') > 0)
-            $STH->setFetchMode(PDO::FETCH_OBJ);
-        else
-            $STH->setFetchMode(PDO::FETCH_ASSOC);
-
-        $arrAllData  = $STH->fetch();
-        return $arrAllData;
-
-
-    }// end of index();
-
-
-    public function setData($postVariableData=NULL){
-
-        if(array_key_exists('id',$postVariableData)){
-            $this->id = $postVariableData['id'];
+        if(array_key_exists('id',$postData)){
+            $this->id = $postData['id'];
         }
 
-        if(array_key_exists('book_title',$postVariableData)){
-            $this->book_name = $postVariableData['book_title'];
+        if(array_key_exists('book_title',$postData)){
+            $this->book_name = $postData['book_title'];
         }
 
-        if(array_key_exists('author_name',$postVariableData)){
-            $this->author_name = $postVariableData['author_name'];
+        if(array_key_exists('author_name',$postData)){
+            $this->author_name = $postData['author_name'];
         }
-        if(array_key_exists('book_info',$postVariableData)){
-            $this->book_info = $postVariableData['book_info'];
+        if(array_key_exists('book_info',$postData)){
+            $this->book_info = $postData['book_info'];
         }
-        if(array_key_exists('book_info',$postVariableData)){
-            $this->book_isbn = $postVariableData['book_isbn'];
+        if(array_key_exists('book_info',$postData)){
+            $this->book_isbn = $postData['book_isbn'];
         }
     }
 
@@ -98,6 +61,42 @@ class BookTitle extends DB
         Utility::redirect('create.php');
 
     }// end of store method
+
+    public function index($fetchMode='ASSOC'){
+
+        $STH = $this->DBH->query('SELECT * from book_title');
+
+        $fetchMode = strtoupper($fetchMode);
+        if(substr_count($fetchMode,'OBJ') > 0)
+            $STH->setFetchMode(PDO::FETCH_OBJ);
+        else
+            $STH->setFetchMode(PDO::FETCH_ASSOC);
+
+        $arrAllData  = $STH->fetchAll();
+        return $arrAllData;
+
+
+    }// end of index();
+
+    public function view($fetchMode='ASSOC'){
+
+        $sql = 'SELECT * from book_title where id='.$this->id;
+
+        $STH = $this->DBH->query($sql);
+
+        $fetchMode = strtoupper($fetchMode);
+        if(substr_count($fetchMode,'OBJ') > 0)
+            $STH->setFetchMode(PDO::FETCH_OBJ);
+        else
+            $STH->setFetchMode(PDO::FETCH_ASSOC);
+
+        $arrOneData  = $STH->fetch();
+        return $arrOneData;
+
+
+    }// end of view();
+
+
 
 
 }

@@ -2,7 +2,7 @@
 require_once("../../../vendor/autoload.php");
 use App\Message\Message;
 use App\Utility\Utility;
-
+$msg = Message::getMessage();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@ use App\Utility\Utility;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Atomic Project</title>
+    <title>Birthday - Atomic Project</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -20,6 +20,7 @@ use App\Utility\Utility;
     <link rel="stylesheet" href="../../../resource/assets/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather|Montserrat|Shrikhand" rel="stylesheet">
     <link rel="stylesheet" href="../../../resource/assets/bootstrap/css/atomic-style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +40,7 @@ use App\Utility\Utility;
             </div>
             <div class="header-info col-md-4">
                 <h2 class="project-heading">Atomic Project</h2>
-                <h3 class="project-sub-heading'">SEIP 137008 B35 Web Application PHP</h3>
+                <h3 class="project-sub-heading">SEIP 137008 B35 Web Application PHP</h3>
             </div>
             <div class="user-img .col-md-4">
                 <img src="../../../resource/assets/img/user-img.jpg" alt="..."  class="img-circle size">
@@ -53,10 +54,10 @@ use App\Utility\Utility;
     <div class="container-fluid wrapper">
         <div class="row">
             <div class="col-md-2">
-                <ul class="nav atomic-side-nav nav-pills nav-stacked ">
+                <ul class="nav atomic-side-nav nav-pills nav-stacked " id="sidebar-ctrl">
                     <li role="presentation"><a href="../atomic_project.php">Menu</a></li>
-                    <li role="presentation" class="active"><a href="#">Book Title <span class="glyphicon glyphicon-play"></span> </a></li>
-                    <li role="presentation"><a href="../BookTitle/index.php">Birthdate</a></li>
+                    <li role="presentation" class="active"><a href="#">Birthday <span class="glyphicon glyphicon-play"></span> </a></li>
+                    <li role="presentation"><a href="../BookTitle/index.php">Book Title</a></li>
                     <li role="presentation"><a href="../City/index.php">City</a></li>
                     <li role="presentation"><a href="../Email/index.php">Email</a></li>
                     <li role="presentation"><a href="../Gender/index.php">Gender</a></li>
@@ -66,61 +67,61 @@ use App\Utility\Utility;
                 </ul>
             </div>
             <div class="col-md-10 ">
-                <div class="atomic-nav">
-                    <div class="navbar">
-                        <div class="container">
-                            <div class="navbar-header">
-                                <span class="navbar-brand">Control</span>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="atomic-nav">
+                            <div class="navbar">
+                                <div class="container">
+                                    <div class="navbar-header">
+                                <span class="navbar-brand"> <a href="#" id="button-sidebar" class="control-link"><span class="glyphicon glyphicon-chevron-left" ></span></a>
+                                 <span class="control-link">Control</span><a href="#" id="button-navbar" class="control-link"><span class="glyphicon glyphicon-chevron-right" ></span></a>
+                                    </div>
+                                    <div class="btn-group-sm nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
+                                        <a href="index.php" class="navbar-btn btn btn-info">Index</a>
+                                        <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
+                                        <a href="../atomic_project.php" class="navbar-btn btn btn-success">Category Page</a>
+                                        <a href="" class="navbar-btn btn btn-primary">Log out</a>
+
+                                    </div>
+                                </div>
                             </div>
-                            <div class="btn-group-lg nav navbar-nav" role="group" aria-label="...">
-                                <a href="create.php" class="navbar-btn btn btn-info">Add Item</a>
-                                <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
-                                <a href="" class="navbar-btn btn btn-success">PDF Download</a>
-                                <a href="" class="navbar-btn btn btn-primary">Log out</a>
-                            </div>
+
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 ">
+                                <?php echo $msg ?>
+                            </div>
+                        </div>
+                        <form class="form-horizontal my-form " action="store.php" method="post">
+                            <fieldset>
+                                <legend class="project-sub-heading">Add Birthday</legend>
 
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Title</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bdate" class="col-sm-2 control-label">Birthdate</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="datepicker" name="bdate" placeholder="Date" >
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <input type="submit" class="btn btn-success" value="Save">
+                                        <input type="reset" class="btn btn-danger" value="reset">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
-
-                <?php echo Message::getMessage() ?>
-                <form class="form-horizontal my-form " action="store.php" method="post">
-                    <fieldset>
-                        <legend class="project-sub-heading">Add Book Information</legend>
-
-                        <div class="form-group">
-                            <label for="book_title" class="col-sm-2 control-label">Title</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="book_title" name="book_title" placeholder="Book Title" required autofocus>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="author_name" class="col-sm-2 control-label">Author Name</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="author_name" name="author_name" placeholder="Author Name" required autofocus>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="book_isbn" class="col-sm-2 control-label">ISBN</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="book_isbn" name="book_isbn" placeholder="ISBN" required autofocus>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="book_info" class="col-sm-2 control-label">Book Info</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="book_info" name="book_info" placeholder="Book Info" required autofocus>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <input type="submit" class="btn btn-success" value="Save">
-                                <input type="reset" class="btn btn-danger" value="reset">
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
 
             </div>
         </div>
@@ -150,11 +151,24 @@ use App\Utility\Utility;
         $("#alertmsg").slideUp(500);
     });
 
+    $("#button-sidebar").click(function(){
+        $("#sidebar-ctrl").toggle();
+    });
+    $("#button-navbar").click(function(){
+        $("#navbar-ctrl").toggle();
+    });
+
 </script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-
+    $( function() {
+        $( "#datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1950:2016',
+            dateFormat: 'yy-mm-dd',});
+    } );
 </script>
-
 
 
 

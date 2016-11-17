@@ -1,12 +1,17 @@
 <?php
 require_once("../../../vendor/autoload.php");
-use App\Message\Message;
-use App\Utility\Utility;
-$msg = Message::getMessage();
+use App\Birthday\Birthday;
+
+$objbirthday = new Birthday();
+
+$objbirthday->setData($_GET);
+
+$oneData = $objbirthday->view('obj');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -29,7 +34,6 @@ $msg = Message::getMessage();
     <![endif]-->
 
 </head>
-
 <body>
 <div class="container-fluid wrapper">
     <div class="jumbotron header">
@@ -55,8 +59,8 @@ $msg = Message::getMessage();
             <div class="col-md-2">
                 <ul class="nav atomic-side-nav nav-pills nav-stacked " id="sidebar-ctrl">
                     <li role="presentation"><a href="../atomic_project.php">Menu</a></li>
-                    <li role="presentation" ><a href="../Birthday/index.php">Birthday  </a></li>
-                    <li role="presentation" class="active"><a href="#">Book Title <span class="glyphicon glyphicon-play"></span></a></li>
+                    <li role="presentation" class="active"> <a href="../Birthday/index.php">Birthday <span class="glyphicon glyphicon-play"></span></a></li>
+                    <li role="presentation" ><a href="../BookTitle/index.php" >Book Title </a></li>
                     <li role="presentation"><a href="../City/index.php">City</a></li>
                     <li role="presentation"><a href="../Email/index.php">Email</a></li>
                     <li role="presentation"><a href="../Gender/index.php">Gender</a></li>
@@ -76,11 +80,10 @@ $msg = Message::getMessage();
                                  <span class="control-link">Control</span><a href="#" id="button-navbar" class="control-link"><span class="glyphicon glyphicon-chevron-right" ></span></a>
                                     </div>
                                     <div class="nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
-                                        <a href="index.php" class="navbar-btn btn btn-info">Index</a>
+                                        <a href="create.php" class="navbar-btn btn btn-info" >Add Item</a>
                                         <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
-                                        <a href="../atomic_project.php" class="navbar-btn btn btn-success">Category Page</a>
+                                        <a href="" class="navbar-btn btn btn-success">PDF Download</a>
                                         <a href="" class="navbar-btn btn btn-primary">Log out</a>
-
                                     </div>
                                 </div>
                             </div>
@@ -88,50 +91,31 @@ $msg = Message::getMessage();
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-4 ">
-                                <?php echo $msg ?>
+                        <div class="">
+                            <div class="panel panel-success">
+                                <div class="panel-heading"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    Birthday</div>
+                                <p class="text-left view-style fade-in one">
+                                    <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    <span class="view-line">ID </span><span class="glyphicon glyphicon-arrow-right"></span>
+                                    <?php echo $oneData->id."<br>"?>
+                                    <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    <span class="view-line">Name </span><span class="glyphicon glyphicon-arrow-right"></span>
+                                    <?php echo $oneData->name."<br>"?>
+
+                                    <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+                                    <span class="view-line">Date </span><span class="glyphicon glyphicon-arrow-right"></span>
+                                    <?php echo $oneData->birthdate."<br>"?>
+
+                                    <a href="edit.php" class="btn btn-info">Edit</a>
+                                    <a href="delete.php" class="btn btn-danger">Delete</a>
+                                </p>
                             </div>
                         </div>
-                        <form class="form-horizontal my-form " action="store.php" method="post">
-                            <fieldset>
-                                <legend class="project-sub-heading">Add Book Information</legend>
-
-                                <div class="form-group">
-                                    <label for="book_title" class="col-sm-2 control-label">Title</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="book_title" name="book_title" placeholder="Book Title" required autofocus>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="author_name" class="col-sm-2 control-label">Author Name</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="author_name" name="author_name" placeholder="Author Name" required autofocus>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="book_isbn" class="col-sm-2 control-label">ISBN</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="book_isbn" name="book_isbn" placeholder="ISBN" required autofocus>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="book_info" class="col-sm-2 control-label">Book Info</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="book_info" name="book_info" placeholder="Book Info" required autofocus>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <input type="submit" class="btn btn-success" value="Save">
-                                        <input type="reset" class="btn btn-danger" value="reset">
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
                     </div>
                 </div>
+
+
 
             </div>
         </div>
@@ -157,9 +141,6 @@ $msg = Message::getMessage();
 <script src="../../../resource/assets/bootstrap/js/bootstrap.min.js"></script>
 
 <script>
-    $("#alertmsg").fadeTo(2000, 500).slideUp(500, function(){
-        $("#alertmsg").slideUp(500);
-    });
 
     $("#button-sidebar").click(function(){
         $("#sidebar-ctrl").toggle();
@@ -176,3 +157,4 @@ $msg = Message::getMessage();
 </body>
 
 </html>
+
