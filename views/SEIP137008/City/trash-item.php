@@ -5,7 +5,7 @@ use App\Message\Message;
 use App\Utility\Utility;
 
 $objCity = new City;
-$allData =  $objCity->index('obj');
+$allData =  $objCity->trashitem('obj');
 
 ################## search  block 1 of 5 start ##################
 if(isset($_REQUEST['search']) )$allData =  $objCity->search($_REQUEST);
@@ -29,7 +29,7 @@ else   $itemsPerPage = 5;
 $_SESSION['ItemsPerPage']= $itemsPerPage;
 
 $pages = ceil($recordCount/$itemsPerPage);
-$someData = $objCity->indexPaginator($page,$itemsPerPage);
+$someData = $objCity->trashedPaginator($page,$itemsPerPage);
 
 $serial = (($page-1) * $itemsPerPage) +1;
 
