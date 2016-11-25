@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2016 at 03:10 AM
+-- Generation Time: Nov 17, 2016 at 05:37 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -63,7 +63,7 @@ CREATE TABLE `book_title` (
 --
 
 INSERT INTO `book_title` (`id`, `book_name`, `author_name`, `book_isbn`, `book_info`) VALUES
-(1, 'Object-Oriented Programming with PHP5', 'Hasin Hyder', '978-1-847192-56-1', 'Learn to leverage PHP5''s OOP features to write man'),
+(1, 'Object-Oriented Programming with PHP', 'Hasin Hyder', '978-1-847192-56-1', 'Learn to leverage PHP5''s OOP features to write man'),
 (2, 'APACHE-MYSQL-PHP', 'Sureed Sarkar', '984-70277-00084', 'à¦ªà¦¿à¦à¦‡à¦›à¦ªà¦¿à¦° à¦‰à¦ªà¦°à§‡ à¦²à§‡à¦–à¦¾ à¦¸à§à¦¹à§ƒà¦¦ à¦¸à¦°à¦•à¦¾à¦°à§‡à¦° à¦¬à¦‡, à¦ªà§à¦°à¦¥à¦® à¦ªà§à¦°à¦•à¦¾à¦¶à¦¿à¦¤ à¦¹à§Ÿà§‡à¦›à¦¿à¦² à¦¡à¦¿à¦¸à§‡à¦®à§à¦¬à¦° à§¨à§¦à§¦à§« à¦¸à¦¾à¦²à§‡ '),
 (3, 'à¦¸à¦¬à¦¾à¦° à¦œà¦¨à§à¦¯ C', 'à¦®à§‹à¦ƒ à¦•à¦¾à¦®à¦°à§à¦œà§à¦œà¦¾à¦®à¦¾à¦¨ à¦¨', '984-8485-29-5', 'Programming C book by Kamruzzaman Niton un Bangla'),
 (4, 'Conquer Grammer', 'Saifur Rahman Khan', 'No ISBN', 'Book for grammar practice by S@ifur''s'),
@@ -84,7 +84,8 @@ INSERT INTO `book_title` (`id`, `book_name`, `author_name`, `book_isbn`, `book_i
 (19, 'bd f hc hcyh', 'hddghjheegfjhgc cdcjhwg', 'hjhcg dgcjh dchfrhfyuycsd', 'hufhbdfgvuyfrehcgc'),
 (20, 'ccg fc hfkjvy iuvhj', 'jkjhd hfkjuf89rufi4utti5y', 'yd7436r74r8775759834', 'ufyeyf rfy y fkjhv  fhdfg'),
 (21, '6e864878687`', 'dydiuyf784r4r487', 'yfyf7r7547t', 'tyygiuryghvyg87t5rterfr'),
-(22, 'hdkjhfkjv irf ij', 'jfhfjhrfhjwdejeri fyr45875', 'whdiufuify784578458657', 'rtrg tgu ggg ghg t  b vbnbj vn,vlhjkpo8 ojl;l');
+(22, 'hdkjhfkjv irf ij', 'jfhfjhrfhjwdejeri fyr45875', 'whdiufuify784578458657', 'rtrg tgu ggg ghg t  b vbnbj vn,vlhjkpo8 ojl;l'),
+(23, 'New Book', 'New Author', '1234-5678-9000', 'testing insert data!');
 
 -- --------------------------------------------------------
 
@@ -265,7 +266,7 @@ ALTER TABLE `birthday`
 -- AUTO_INCREMENT for table `book_title`
 --
 ALTER TABLE `book_title`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `city`
 --

@@ -140,11 +140,129 @@ class BookTitle extends DB
         Utility::redirect('index.php');
     }
 
+    public function indexPaginator($page=1,$itemsPerPage=5){
+
+        $start = (($page-1) * $itemsPerPage);
+
+        $sql = "SELECT * from book_title  WHERE visible ='1' LIMIT $start,$itemsPerPage";
+
+        $STH = $this->DBH->query($sql);
+
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+
+        $arrSomeData  = $STH->fetchAll();
+        return $arrSomeData;
+
+    }// end of indexPaginator();
+
+
+
+    public function trashedPaginator($page=0,$itemsPerPage=5){
+
+        $start = (($page-1) * $itemsPerPage);
+
+        $sql = "SELECT * from book_title  WHERE visible ='0' LIMIT $start,$itemsPerPage";
+
+        $STH = $this->DBH->query($sql);
+
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+
+        $arrSomeData  = $STH->fetchAll();
+        return $arrSomeData;
+
+    }// end of trashedPaginator();
+
+
+
+
+    public function search($requestArray){
+        $sql = "";
+        if( isset($requestArray['byTitle']) && isset($requestArray['byAuthor']) )  $sql = "SELECT * FROM `book_title` WHERE `visible` ='1' AND (`book_name` LIKE '%".$requestArray['search']."%' OR `author_name` LIKE '%".$requestArray['search']."%')";
+        if(isset($requestArray['byTitle']) && !isset($requestArray['byAuthor']) ) $sql = "SELECT * FROM `book_title` WHERE `visible` ='1' AND `book_name` LIKE '%".$requestArray['search']."%'";
+        if(!isset($requestArray['byTitle']) && isset($requestArray['byAuthor']) )  $sql = "SELECT * FROM `book_title` WHERE `visible` ='1' AND `author_name` LIKE '%".$requestArray['search']."%'";
+
+        $STH  = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+        $allData = $STH->fetchAll();
+
+        return $allData;
+
+    }// end of search()
+
+
+
+    public function getAllKeywords()
+    {
+        $_allKeywords = array();
+        $WordsArr = array();
+        $sql = "SELECT * FROM `book_title` WHERE `visible` =1";
+
+        $STH = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+
+        // for each search field block start
+        $allData= $STH->fetchAll();
+        foreach ($allData as $oneData) {
+            $_allKeywords[] = trim($oneData->book_name);
+        }
+
+        $STH = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+
+        $allData= $STH->fetchAll();
+        foreach ($allData as $oneData) {
+
+            $eachString= strip_tags($oneData->book_name);
+            $eachString=trim( $eachString);
+            $eachString= preg_replace( "/\r|\n/", " ", $eachString);
+            $eachString= str_replace("&nbsp;","",  $eachString);
+            $WordsArr = explode(" ", $eachString);
+
+            foreach ($WordsArr as $eachWord){
+                $_allKeywords[] = trim($eachWord);
+            }
+        }
+        // for each search field block end
+
+
+
+
+        // for each search field block start
+        $STH = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+        $allData= $STH->fetchAll();
+        foreach ($allData as $oneData) {
+            $_allKeywords[] = trim($oneData->author_name);
+        }
+        $STH = $this->DBH->query($sql);
+        $STH->setFetchMode(PDO::FETCH_OBJ);
+        $allData= $STH->fetchAll();
+        foreach ($allData as $oneData) {
+
+            $eachString= strip_tags($oneData->author_name);
+            $eachString=trim( $eachString);
+            $eachString= preg_replace( "/\r|\n/", " ", $eachString);
+            $eachString= str_replace("&nbsp;","",  $eachString);
+            $WordsArr = explode(" ", $eachString);
+
+            foreach ($WordsArr as $eachWord){
+                $_allKeywords[] = trim($eachWord);
+            }
+        }
+        // for each search field block end
+
+
+        return array_unique($_allKeywords);
+
+
+    }// get all keywords
+
+
+
 }
 
 
-
-
+?>
 
 
 
