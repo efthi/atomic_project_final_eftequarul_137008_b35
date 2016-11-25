@@ -6,7 +6,7 @@ use App\Utility\Utility;
 
 $objsummary = new SummaryOfOrganization();
 
-$allData = $objsummary->index('obj');
+$allData = $objsummary->trashitem('obj');
 
 
 ################## search  block 1 of 5 start ##################
@@ -31,7 +31,7 @@ else   $itemsPerPage = 5;
 $_SESSION['ItemsPerPage']= $itemsPerPage;
 
 $pages = ceil($recordCount/$itemsPerPage);
-$someData = $objsummary->indexPaginator($page,$itemsPerPage);
+$someData = $objsummary->trashedPaginator($page,$itemsPerPage);
 
 $serial = (($page-1) * $itemsPerPage) +1;
 
@@ -162,17 +162,17 @@ if(isset($_REQUEST['search']) ) {
                                 echo "<td>$oneData->name</td>";
                                 echo "<td>$oneData->summary</td>";
                                 echo " <td>
-                                                <a href='view.php?id=$oneData->id' class='btn btn-info btn-sm'><span class='glyphicon glyphicon-eye-open'></span> View</a>
-                                                </td>
-                                                <td>
-                                                <a href='edit.php?id=$oneData->id' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-pencil'></span> Edit</a>
-                                                </td>
-                                                <td>
-                                                <a href='trash.php?id=$oneData->id' class='btn btn-warning btn-sm' onclick='return confirm_msg();'><span class='glyphicon glyphicon-trash'></span> Trash</a>
-                                                </td>
-                                                <td>
-                                                <a href='delete.php?id=$oneData->id' class='btn btn-danger btn-sm' onclick='return confirm_msg();'><span class='glyphicon glyphicon-remove'></span> Delete</a>
-                                                </td>";
+                                            <a href='view.php?id=$oneData->id' class='btn btn-info btn-sm'><span class='glyphicon glyphicon-eye-open'></span> View</a>
+                                            </td>
+                                            <td>
+                                            <a href='edit.php?id=$oneData->id' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-pencil'></span> Edit</a>
+                                            </td>
+                                            <td>
+                                            <a href='clear_trash.php?id=$oneData->id' class='btn btn-success btn-sm'>Reset</a>
+                                            </td>
+                                            <td>
+                                            <a href='delete.php?id=$oneData->id' class='btn btn-danger btn-sm' onclick='return confirm_msg();'><span class='glyphicon glyphicon-remove'></span> Delete</a>
+                                            </td>";
                                 echo "</tr>";
                                 $serial++;
                             }

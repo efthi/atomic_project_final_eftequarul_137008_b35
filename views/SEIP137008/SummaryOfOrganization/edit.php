@@ -3,49 +3,10 @@ require_once("../../../vendor/autoload.php");
 use App\SummaryOfOrganization\SummaryOfOrganization;
 use App\Message\Message;
 use App\Utility\Utility;
-
+$msg = Message::getMessage();
 $objsummary = new SummaryOfOrganization();
-
-$allData = $objsummary->index('obj');
-
-
-################## search  block 1 of 5 start ##################
-if(isset($_REQUEST['search']) )$allData =  $objsummary->search($_REQUEST);
-$availableKeywords=$objsummary->getAllKeywords();
-$comma_separated_keywords= '"'.implode('","',$availableKeywords).'"';
-################## search  block 1 of 5 end ##################
-
-
-######################## pagination code block# 1 of 2 start ######################################
-$recordCount= count($allData);
-
-
-if(isset($_REQUEST['Page']))   $page = $_REQUEST['Page'];
-else if(isset($_SESSION['Page']))   $page = $_SESSION['Page'];
-else   $page = 1;
-$_SESSION['Page']= $page;
-
-if(isset($_REQUEST['ItemsPerPage']))   $itemsPerPage = $_REQUEST['ItemsPerPage'];
-else if(isset($_SESSION['ItemsPerPage']))   $itemsPerPage = $_SESSION['ItemsPerPage'];
-else   $itemsPerPage = 5;
-$_SESSION['ItemsPerPage']= $itemsPerPage;
-
-$pages = ceil($recordCount/$itemsPerPage);
-$someData = $objsummary->indexPaginator($page,$itemsPerPage);
-
-$serial = (($page-1) * $itemsPerPage) +1;
-
-####################### pagination code block# 1 of 2 end #########################################
-
-
-################## search  block 2 of 5 start ##################
-
-if(isset($_REQUEST['search']) ) {
-    $someData = $objsummary->search($_REQUEST);
-    $serial = 1;
-}
-################## search  block 2 of 5 end ##################
-
+$objsummary->setData($_GET);
+$oneData = $objsummary->view('obj');
 
 ?>
 <!DOCTYPE html>
@@ -146,83 +107,38 @@ if(isset($_REQUEST['search']) ) {
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <table class="table table-bordered table-hover table-responsive my-table-border my-td fade-in one">
-                            <tr class="active">
-                                <th>Serial</th>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Summary</th>
-                                <th colspan="4">Action</th>
-                            </tr>
-                            <?php
-                            foreach($someData as $oneData){
-                                echo "<tr>";
-                                echo "<td>$serial</td>";
-                                echo "<td>$oneData->id</td>";
-                                echo "<td>$oneData->name</td>";
-                                echo "<td>$oneData->summary</td>";
-                                echo " <td>
-                                                <a href='view.php?id=$oneData->id' class='btn btn-info btn-sm'><span class='glyphicon glyphicon-eye-open'></span> View</a>
-                                                </td>
-                                                <td>
-                                                <a href='edit.php?id=$oneData->id' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-pencil'></span> Edit</a>
-                                                </td>
-                                                <td>
-                                                <a href='trash.php?id=$oneData->id' class='btn btn-warning btn-sm' onclick='return confirm_msg();'><span class='glyphicon glyphicon-trash'></span> Trash</a>
-                                                </td>
-                                                <td>
-                                                <a href='delete.php?id=$oneData->id' class='btn btn-danger btn-sm' onclick='return confirm_msg();'><span class='glyphicon glyphicon-remove'></span> Delete</a>
-                                                </td>";
-                                echo "</tr>";
-                                $serial++;
-                            }
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 ">
+                                <?php echo $msg ?>
+                            </div>
+                        </div>
+                        <form class="form-horizontal my-form " action="update.php" method="post">
+                            <fieldset>
+                                <legend class="project-sub-heading">Edit Summary</legend>
 
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="hidden" name="id" value="<?php echo $oneData->id ?>">
+                                        <input type="text" class="form-control" id="name" name="name" value="<?php echo $oneData->name ?>" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="summary" class="col-sm-2 control-label">Summary</label>
+                                    <div class="col-sm-8">
+                                <textarea name="summary" id="summary" cols="70" rows="10"><?php echo $oneData->summary ?>
+                                </textarea>
+                                    </div>
+                                </div>
 
-                            ?>
-                            <tr class="">
-                                <td colspan="2">
-                                    <select  class="form-control"  name="ItemsPerPage" id="ItemsPerPage" onchange="javascript:location.href = this.value;" >
-                                        <?php
-                                        if($itemsPerPage==5 ) echo '<option value="?ItemsPerPage=5" selected >Show 5 Items Per Page</option>';
-                                        else echo '<option  value="?ItemsPerPage=5">Show 5 Items Per Page</option>';
-
-                                        if($itemsPerPage==10 )  echo '<option  value="?ItemsPerPage=10" selected >Show 10 Items Per Page</option>';
-                                        else  echo '<option  value="?ItemsPerPage=10">Show 10 Items Per Page</option>';
-
-                                        if($itemsPerPage==15 )  echo '<option  value="?ItemsPerPage=15" selected >Show 15 Items Per Page</option>';
-                                        else echo '<option  value="?ItemsPerPage=15">Show 15 Items Per Page</option>';
-
-                                        if($itemsPerPage==20 )  echo '<option  value="?ItemsPerPage=20"selected >Show 20 Items Per Page</option>';
-                                        else echo '<option  value="?ItemsPerPage=20">Show 20 Items Per Page</option>';
-
-                                        ?>
-                                    </select>
-
-                                </td>
-                                <td  colspan="6">
-                                    <ul class="pagination">
-                                        <?php
-
-                                        $pageMinusOne  = $page-1;
-                                        $pagePlusOne  = $page+1;
-                                        if($page>$pages) Utility::redirect("index.php?Page=$pages");
-
-                                        if($page>1)  echo "<li><a href='index.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
-                                        for($i=1;$i<=$pages;$i++)
-                                        {
-                                            if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
-                                            else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
-
-                                        }
-                                        if($page<$pages) echo "<li><a href='index.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
-
-                                        ?>
-
-                                    </ul>
-                                </td>
-                            </tr>
-
-                        </table>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <input type="submit" class="btn btn-success" value="Save">
+                                        <input type="reset" class="btn btn-danger" value="reset">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
                     </div>
 
 
