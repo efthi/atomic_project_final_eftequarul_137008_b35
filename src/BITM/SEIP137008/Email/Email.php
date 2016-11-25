@@ -175,7 +175,7 @@ class Email extends DB
     public function search($requestArray){
         $sql = "";
         if( isset($requestArray['byName']) && isset($requestArray['byEmail']) )  $sql = "SELECT * FROM `email` WHERE `visible` ='1' AND (`name` LIKE '%".$requestArray['search']."%' OR `emailaddress` LIKE '%".$requestArray['search']."%')";
-        if(isset($requestArray['byName']) && !isset($requestArray['byEmailEmail']) ) $sql = "SELECT * FROM `email` WHERE `visible` ='1' AND `name` LIKE '%".$requestArray['search']."%'";
+        if(isset($requestArray['byName']) && !isset($requestArray['byEmail']) ) $sql = "SELECT * FROM `email` WHERE `visible` ='1' AND `name` LIKE '%".$requestArray['search']."%'";
         if(!isset($requestArray['byName']) && isset($requestArray['byEmail']) )  $sql = "SELECT * FROM `email` WHERE `visible` ='1' AND `emailaddress` LIKE '%".$requestArray['search']."%'";
 
         $STH  = $this->DBH->query($sql);
