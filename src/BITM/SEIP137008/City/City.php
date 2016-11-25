@@ -152,7 +152,7 @@ class City extends DB
 
 
 
-    public function trashedPaginator($page=0,$itemsPerPage=5){
+    public function trashedPaginator($page=1,$itemsPerPage=5){
 
         $start = (($page-1) * $itemsPerPage);
 

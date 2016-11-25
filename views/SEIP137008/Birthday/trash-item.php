@@ -1,16 +1,17 @@
 <?php
-use App\Gender\Gender;
-use App\Utility\Utility;
 require_once("../../../vendor/autoload.php");
+use App\Birthday\Birthday;
+use App\Utility\Utility;
+
+$objbirthday = new Birthday();
+$allData = $objbirthday->trashitem('obj');
 
 
-$genderinfo = new Gender;
-$allData = $genderinfo->trashitem('obj');
 
 
 ################## search  block 1 of 5 start ##################
-if(isset($_REQUEST['search']) )$allData =  $genderinfo->search($_REQUEST);
-$availableKeywords=$genderinfo->getAllKeywords();
+if(isset($_REQUEST['search']) )$allData =  $objbirthday->search($_REQUEST);
+$availableKeywords=$objbirthday->getAllKeywords();
 $comma_separated_keywords= '"'.implode('","',$availableKeywords).'"';
 ################## search  block 1 of 5 end ##################
 
@@ -30,7 +31,7 @@ else   $itemsPerPage = 5;
 $_SESSION['ItemsPerPage']= $itemsPerPage;
 
 $pages = ceil($recordCount/$itemsPerPage);
-$someData = $genderinfo->trashedPaginator($page,$itemsPerPage);
+$someData = $objbirthday->trashedPaginator($page,$itemsPerPage);
 
 $serial = (($page-1) * $itemsPerPage) +1;
 
@@ -40,7 +41,7 @@ $serial = (($page-1) * $itemsPerPage) +1;
 ################## search  block 2 of 5 start ##################
 
 if(isset($_REQUEST['search']) ) {
-    $someData = $genderinfo->search($_REQUEST);
+    $someData = $objbirthday->search($_REQUEST);
     $serial = 1;
 }
 ################## search  block 2 of 5 end ##################
@@ -84,7 +85,7 @@ if(isset($_REQUEST['search']) ) {
     <div class="jumbotron header">
         <div class="row">
             <div class="logo col-md-4 ">
-                <img src="../../../resource/assets/img/category-image/gender.jpg" alt="..." class="img-rounded">
+                <img src="../../../resource/assets/img/category-image/birthdate.png" alt="..." class="img-rounded">
             </div>
             <div class="header-info col-md-4">
                 <h2 class="project-heading animate-head-text" >Atomic Project</h2>
@@ -104,16 +105,17 @@ if(isset($_REQUEST['search']) ) {
         <li class="active"><?php echo basename($_SERVER['PHP_SELF']); ?></li>
     </ol>
     <hr class="hr-divider">
+
     <div class="container-fluid wrapper">
         <div class="row">
             <div class="col-md-2">
                 <ul class="nav atomic-side-nav nav-pills nav-stacked " id="sidebar-ctrl">
                     <li role="presentation"><a href="../atomic_project.php">Menu</a></li>
-                    <li role="presentation" ><a href="../Birthday/index.php">Birthday  </a></li>
+                    <li role="presentation" class="active" ><a href="index.php">Birthday <span class="glyphicon glyphicon-play"></span></a></li>
                     <li role="presentation" ><a href="../BookTitle/index.php">Book Title</a></li>
                     <li role="presentation"><a href="../City/index.php">City</a></li>
                     <li role="presentation"><a href="../Email/index.php">Email</a></li>
-                    <li role="presentation" class="active"><a href="index.php">Gender <span class="glyphicon glyphicon-play"></span></a></li>
+                    <li role="presentation"><a href="../Gender/index.php">Gender</a></li>
                     <li role="presentation"><a href="../Hobbies/index.php">Hobbies</a></li>
                     <li role="presentation"><a href="../ProfilePicture/index.php">Profile Picture</a></li>
                     <li role="presentation"><a href="../SummaryOfOrganization/index.php">Summary of Organization</a></li>
@@ -133,7 +135,7 @@ if(isset($_REQUEST['search']) ) {
                                         <form id="search-form" action="index.php"  method="get">
                                             <input type="text" value="" id="searchID" name="search" placeholder="Search">
                                             <input type="checkbox"  name="byName"   checked  >By Name
-                                            <input type="checkbox"  name="byGender"  checked >By Gender
+                                            <input type="checkbox"  name="byDate"  checked >By Date
                                             <input hidden type="submit" value="search">
                                         </form>
                                         <a href="create.php" class="navbar-btn btn btn-info" ><span class="glyphicon glyphicon-plus-sign"></span> Add Item</a>
@@ -154,7 +156,7 @@ if(isset($_REQUEST['search']) ) {
                                 <th>Serial</th>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Gender</th>
+                                <th>Birtdate</th>
                                 <th colspan="4">Action</th>
                             </tr>
                             <?php
@@ -163,7 +165,7 @@ if(isset($_REQUEST['search']) ) {
                                 echo "<td>$serial</td>";
                                 echo "<td>$oneData->id</td>";
                                 echo "<td>$oneData->name</td>";
-                                echo "<td>$oneData->gender</td>";
+                                echo "<td>$oneData->birthdate</td>";
                                 echo " <td>
                                             <a href='view.php?id=$oneData->id' class='btn btn-info btn-sm'><span class='glyphicon glyphicon-eye-open'></span> View</a>
                                             </td>

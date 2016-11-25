@@ -22,7 +22,7 @@ else   $itemsPerPage = 5;
 $_SESSION['ItemsPerPage']= $itemsPerPage;
 
 $pages = ceil($recordCount/$itemsPerPage);
-$someData = $objbooktitle->indexPaginator($page,$itemsPerPage);
+$someData = $objbooktitle->trashedPaginator($page,$itemsPerPage);
 
 $serial = (($page-1) * $itemsPerPage) +1;
 
@@ -78,7 +78,13 @@ $serial = (($page-1) * $itemsPerPage) +1;
     </div>
 
     <hr class="hr-divider">
+    <ol class="breadcrumb">
+        <li><a href="../atomic_project.php">Home</a></li>
+        <li><a href="index.php"><?php echo basename(__DIR__) ?></a></li>
+        <li class="active"><?php echo basename($_SERVER['PHP_SELF']); ?></li>
+    </ol>
     <hr class="hr-divider">
+
     <div class="container-fluid wrapper">
         <div class="row">
             <div class="col-md-2">
@@ -177,16 +183,16 @@ $serial = (($page-1) * $itemsPerPage) +1;
 
                                         $pageMinusOne  = $page-1;
                                         $pagePlusOne  = $page+1;
-                                        if($page>$pages) Utility::redirect("index.php?Page=$pages");
+                                        if($page>$pages) Utility::redirect("trash-item.php?Page=$pages");
 
-                                        if($page>1)  echo "<li><a href='index.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
+                                        if($page>1)  echo "<li><a href='trash-item.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
                                         for($i=1;$i<=$pages;$i++)
                                         {
                                             if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
                                             else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
 
                                         }
-                                        if($page<$pages) echo "<li><a href='index.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
+                                        if($page<$pages) echo "<li><a href='trash-item.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
 
                                         ?>
 

@@ -1,6 +1,8 @@
 <?php
-use App\Hobbies\Hobbies;
 require_once("../../../vendor/autoload.php");
+
+use App\Hobbies\Hobbies;
+use App\Utility\Utility;
 
 
 $hobbyinfo = new Hobbies;
@@ -97,7 +99,11 @@ if(isset($_REQUEST['search']) ) {
     </div>
 
     <hr class="hr-divider">
-
+    <ol class="breadcrumb">
+        <li><a href="../atomic_project.php">Home</a></li>
+        <li><a href="index.php"><?php echo basename(__DIR__) ?></a></li>
+        <li class="active"><?php echo basename($_SERVER['PHP_SELF']); ?></li>
+    </ol>
     <hr class="hr-divider">
     <div class="container-fluid wrapper">
         <div class="row">

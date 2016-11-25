@@ -1,8 +1,14 @@
 <?php
 require_once("../../../vendor/autoload.php");
+use App\Birthday\Birthday;
 use App\Message\Message;
-
 $msg = Message::getMessage();
+$objbirthday = new Birthday();
+
+$objbirthday->setData($_GET);
+
+$oneData = $objbirthday->view('obj');
+
 
 ?>
 <!DOCTYPE html>
@@ -27,10 +33,14 @@ $msg = Message::getMessage();
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Favicon and touch icons -->
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -38,7 +48,7 @@ $msg = Message::getMessage();
     <div class="jumbotron header">
         <div class="row">
             <div class="logo col-md-4 ">
-                <img src="../../../resource/assets/img/category-image/hobbies.png" alt="..." class="img-rounded">
+                <img src="../../../resource/assets/img/category-image/birthdate.png" alt="..." class="img-rounded">
             </div>
             <div class="header-info col-md-4">
                 <h2 class="project-heading animate-head-text" >Atomic Project</h2>
@@ -63,12 +73,12 @@ $msg = Message::getMessage();
             <div class="col-md-2">
                 <ul class="nav atomic-side-nav nav-pills nav-stacked " id="sidebar-ctrl">
                     <li role="presentation"><a href="../atomic_project.php">Menu</a></li>
-                    <li role="presentation" ><a href="../Birthday/index.php">Birthday  </a></li>
-                    <li role="presentation" ><a href="../BookTitle/index.php">Book Title</a></li>
+                    <li role="presentation" class="active"><a href="#">Birthday <span class="glyphicon glyphicon-play"></span> </a></li>
+                    <li role="presentation"><a href="../BookTitle/index.php">Book Title</a></li>
                     <li role="presentation"><a href="../City/index.php">City</a></li>
                     <li role="presentation"><a href="../Email/index.php">Email</a></li>
                     <li role="presentation"><a href="../Gender/index.php">Gender</a></li>
-                    <li role="presentation" class="active"><a href="index.php">Hobbies <span class="glyphicon glyphicon-play"></span></a></li>
+                    <li role="presentation"><a href="../Hobbies/index.php">Hobbies</a></li>
                     <li role="presentation"><a href="../ProfilePicture/index.php">Profile Picture</a></li>
                     <li role="presentation"><a href="../SummaryOfOrganization/index.php">Summary of Organization</a></li>
                 </ul>
@@ -83,7 +93,7 @@ $msg = Message::getMessage();
                                 <span class="navbar-brand"> <a href="#" id="button-sidebar" class="control-link"><span class="glyphicon glyphicon-chevron-left" ></span></a>
                                  <span class="control-link">Control</span><a href="#" id="button-navbar" class="control-link"><span class="glyphicon glyphicon-chevron-right" ></span></a>
                                     </div>
-                                    <div class="nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
+                                    <div class="btn-group-sm nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
                                         <a href="index.php" class="navbar-btn btn btn-info">Index</a>
                                         <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
                                         <a href="../atomic_project.php" class="navbar-btn btn btn-success">Category Page</a>
@@ -101,41 +111,30 @@ $msg = Message::getMessage();
                                 <?php echo $msg ?>
                             </div>
                         </div>
-                        <form class="form-horizontal my-form " action="store.php" method="post">
+                        <form class="form-horizontal my-form " action="update.php" method="post">
                             <fieldset>
-                                <legend class="project-sub-heading">Add Hobbiesr</legend>
+                                <legend class="project-sub-heading">Edit Profile Picture</legend>
 
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Name</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required autofocus>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="id" value="<?php echo $oneData->id ?>">
+                                        <input type="text" class="form-control" id="name" name="name" value="<?php echo $oneData->name ?>" required autofocus>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="hobbies" class="col-sm-2 control-label">Hobbies</label>
-                                    <div class="col-sm-6 radio">
-                                        <div class="checkbox-inline">
-                                            <input type="checkbox" name="hobbies[]" id="inlineCheckbox1" value="Reading"> Reading
-                                            <br>
-                                            <input type="checkbox" name="hobbies[]" id="inlineCheckbox2" value="Writting"> Writting
-                                            <br>
-                                            <input type="checkbox" name="hobbies[]" id="inlineCheckbox3" value="Coding"> Coding
-                                            <br>
-                                            <input type="checkbox" name="hobbies[]" id="inlineCheckbox3" value="Cooking"> Cooking
-                                            <br>
-                                            <input type="checkbox" name="hobbies[]" id="inlineCheckbox3" value="Travelling"> Travelling
-                                            <br>
-                                            <input type="checkbox" name="hobbies[]" id="inlineCheckbox3" value="Fighting"> Fighting
-                                            <br>
-                                        </div>
+                                    <label for="bdate" class="col-sm-2 control-label">Date of Birth</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="datepicker" class="form-control" name="bdate"  value="<?php echo $oneData->birthdate ?>" required autofocus>
                                     </div>
+                                </div>
 
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <input type="submit" class="btn btn-success" value="Save">
-                                            <input type="reset" class="btn btn-danger" value="reset">
-                                        </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <input type="submit" class="btn btn-success" value="Save">
+                                        <input type="reset" class="btn btn-danger" value="reset">
                                     </div>
+                                </div>
                             </fieldset>
                         </form>
 
@@ -178,6 +177,16 @@ $msg = Message::getMessage();
     });
 
 </script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( "#datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1950:2016',
+            dateFormat: 'yy-mm-dd',});
+    } );
+</script>
 
 <script src="../../../resource/assets/bootstrap/text-animation/jquery.fittext.js"></script>
 <script src="../../../resource/assets/bootstrap/text-animation/jquery.lettering.js"></script>
@@ -199,5 +208,3 @@ $msg = Message::getMessage();
 </body>
 
 </html>
-
-

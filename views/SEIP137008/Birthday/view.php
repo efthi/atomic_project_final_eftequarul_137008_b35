@@ -12,6 +12,7 @@ $oneData = $objbirthday->view('obj');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -22,28 +23,35 @@ $oneData = $objbirthday->view('obj');
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="../../../resource/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../resource/assets/bootstrap/text-animation/animate.css">
     <link rel="stylesheet" href="../../../resource/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather|Montserrat|Shrikhand" rel="stylesheet">
     <link rel="stylesheet" href="../../../resource/assets/bootstrap/css/atomic-style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Favicon and touch icons -->
+    <style>
+
+    </style>
 </head>
+
 <body>
 <div class="container-fluid wrapper">
     <div class="jumbotron header">
         <div class="row">
             <div class="logo col-md-4 ">
-                <img src="../../../resource/assets/img/logo/book-title.png" alt="..." class="img-rounded">
+                <img src="../../../resource/assets/img/category-image/birthdate.png" alt="..." class="img-rounded">
             </div>
             <div class="header-info col-md-4">
-                <h2 class="project-heading">Atomic Project</h2>
-                <h3 class="project-sub-heading">SEIP 137008 B35 Web Application PHP</h3>
+                <h2 class="project-heading animate-head-text" >Atomic Project</h2>
+                <h3 class="project-sub-heading animate-head-text">SEIP 137008 B35 Web Application PHP</h3>
             </div>
             <div class="user-img .col-md-4">
                 <img src="../../../resource/assets/img/user-img.jpg" alt="..."  class="img-circle size">
@@ -53,14 +61,19 @@ $oneData = $objbirthday->view('obj');
     </div>
 
     <hr class="hr-divider">
+    <ol class="breadcrumb">
+        <li><a href="../atomic_project.php">Home</a></li>
+        <li><a href="index.php"><?php echo basename(__DIR__) ?></a></li>
+        <li class="active"><?php echo basename($_SERVER['PHP_SELF']); ?></li>
+    </ol>
     <hr class="hr-divider">
     <div class="container-fluid wrapper">
         <div class="row">
             <div class="col-md-2">
                 <ul class="nav atomic-side-nav nav-pills nav-stacked " id="sidebar-ctrl">
                     <li role="presentation"><a href="../atomic_project.php">Menu</a></li>
-                    <li role="presentation" class="active"> <a href="../Birthday/index.php">Birthday <span class="glyphicon glyphicon-play"></span></a></li>
-                    <li role="presentation" ><a href="../BookTitle/index.php" >Book Title </a></li>
+                    <li role="presentation" class="active"><a href="#">Birthday <span class="glyphicon glyphicon-play"></span> </a></li>
+                    <li role="presentation"><a href="../BookTitle/index.php">Book Title</a></li>
                     <li role="presentation"><a href="../City/index.php">City</a></li>
                     <li role="presentation"><a href="../Email/index.php">Email</a></li>
                     <li role="presentation"><a href="../Gender/index.php">Gender</a></li>
@@ -79,10 +92,12 @@ $oneData = $objbirthday->view('obj');
                                 <span class="navbar-brand"> <a href="#" id="button-sidebar" class="control-link"><span class="glyphicon glyphicon-chevron-left" ></span></a>
                                  <span class="control-link">Control</span><a href="#" id="button-navbar" class="control-link"><span class="glyphicon glyphicon-chevron-right" ></span></a>
                                     </div>
-                                    <div class="nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
-                                        <a href="create.php" class="navbar-btn btn btn-info" >Add Item</a>
-                                        <a href="" class="navbar-btn btn btn-warning">Trash Item</a>
-                                        <a href="" class="navbar-btn btn btn-success">PDF Download</a>
+                                    <div class=" nav navbar-nav" role="group" aria-label="..." id="navbar-ctrl">
+                                        <a href="create.php" class="navbar-btn btn btn-info"><span class="glyphicon glyphicon-plus-sign"></span> Add Item</a>
+                                        <a href="index.php" class="navbar-btn btn btn-warning">Go Back</a>
+                                        <a href="pdf.php" class="navbar-btn btn btn-success ">PDF</a>
+                                        <a href="xl.php" class="navbar-btn btn btn-success ">Excel</a>
+                                        <a href="email.php" class="navbar-btn btn btn-success"><span class="glyphicon glyphicon-envelope"></span> Email</a>
                                         <a href="" class="navbar-btn btn btn-primary">Log out</a>
                                     </div>
                                 </div>
@@ -124,8 +139,8 @@ $oneData = $objbirthday->view('obj');
     <div class="footer">
         <div class="row">
             <div class="header-info col-md-6">
-                <h4>Atomic Project</h4>
-                <h5> &copy; 2016 Reserved By Efthaqur Alam</h5>
+                <h4 class="animate-footer-text">Atomic Project</h4>
+                <h5 class="animate-footer-text"> &copy; 2016 Reserved By Efthaqur Alam</h5>
             </div>
             <div class="user-img col-md-6">
             </div>
@@ -141,6 +156,9 @@ $oneData = $objbirthday->view('obj');
 <script src="../../../resource/assets/bootstrap/js/bootstrap.min.js"></script>
 
 <script>
+    $("#alertmsg").fadeTo(2000, 500).slideUp(500, function(){
+        $("#alertmsg").slideUp(500);
+    });
 
     $("#button-sidebar").click(function(){
         $("#sidebar-ctrl").toggle();
@@ -151,10 +169,23 @@ $oneData = $objbirthday->view('obj');
 
 </script>
 
-
+<script src="../../../resource/assets/bootstrap/text-animation/jquery.fittext.js"></script>
+<script src="../../../resource/assets/bootstrap/text-animation/jquery.lettering.js"></script>
+<script src="../../../resource/assets/bootstrap/text-animation/jquery.textillate.js"></script>
+<script>
+    $('.animate-head-text').textillate({
+        in: { effect: 'wobble' },
+        out: { effect: 'rollOut', sequence: true },
+        loop: true
+    });
+    $('.animate-footer-text').textillate({
+        in: { effect: 'bounceIn' },
+        out: { effect: 'flash', sequence: true },
+        loop: true
+    });
+</script>
 
 
 </body>
 
 </html>
-

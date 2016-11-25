@@ -1,16 +1,17 @@
 <?php
-use App\Gender\Gender;
-use App\Utility\Utility;
+
 require_once("../../../vendor/autoload.php");
+use App\ProfilePicture\ProfilePicture;
+use App\Utility\Utility;
 
+$pic = new ProfilePicture;
+$allData = $pic->trashitem('obj');
 
-$genderinfo = new Gender;
-$allData = $genderinfo->trashitem('obj');
 
 
 ################## search  block 1 of 5 start ##################
-if(isset($_REQUEST['search']) )$allData =  $genderinfo->search($_REQUEST);
-$availableKeywords=$genderinfo->getAllKeywords();
+if(isset($_REQUEST['search']) )$allData =  $pic->search($_REQUEST);
+$availableKeywords=$pic->getAllKeywords();
 $comma_separated_keywords= '"'.implode('","',$availableKeywords).'"';
 ################## search  block 1 of 5 end ##################
 
@@ -30,7 +31,7 @@ else   $itemsPerPage = 5;
 $_SESSION['ItemsPerPage']= $itemsPerPage;
 
 $pages = ceil($recordCount/$itemsPerPage);
-$someData = $genderinfo->trashedPaginator($page,$itemsPerPage);
+$someData = $pic->trashedPaginator($page,$itemsPerPage);
 
 $serial = (($page-1) * $itemsPerPage) +1;
 
@@ -40,7 +41,7 @@ $serial = (($page-1) * $itemsPerPage) +1;
 ################## search  block 2 of 5 start ##################
 
 if(isset($_REQUEST['search']) ) {
-    $someData = $genderinfo->search($_REQUEST);
+    $someData = $pic->search($_REQUEST);
     $serial = 1;
 }
 ################## search  block 2 of 5 end ##################
@@ -84,7 +85,7 @@ if(isset($_REQUEST['search']) ) {
     <div class="jumbotron header">
         <div class="row">
             <div class="logo col-md-4 ">
-                <img src="../../../resource/assets/img/category-image/gender.jpg" alt="..." class="img-rounded">
+                <img src="../../../resource/assets/img/category-image/profile-picture.png" alt="..." class="img-rounded">
             </div>
             <div class="header-info col-md-4">
                 <h2 class="project-heading animate-head-text" >Atomic Project</h2>
@@ -113,9 +114,9 @@ if(isset($_REQUEST['search']) ) {
                     <li role="presentation" ><a href="../BookTitle/index.php">Book Title</a></li>
                     <li role="presentation"><a href="../City/index.php">City</a></li>
                     <li role="presentation"><a href="../Email/index.php">Email</a></li>
-                    <li role="presentation" class="active"><a href="index.php">Gender <span class="glyphicon glyphicon-play"></span></a></li>
+                    <li role="presentation"><a href="../Gender/index.php">Gender</a></li>
                     <li role="presentation"><a href="../Hobbies/index.php">Hobbies</a></li>
-                    <li role="presentation"><a href="../ProfilePicture/index.php">Profile Picture</a></li>
+                    <li role="presentation" class="active"><a href="index.php">Profile Picture <span class="glyphicon glyphicon-play"></span></a></li>
                     <li role="presentation"><a href="../SummaryOfOrganization/index.php">Summary of Organization</a></li>
                 </ul>
             </div>
@@ -130,12 +131,6 @@ if(isset($_REQUEST['search']) ) {
                                  <span class="control-link">Control</span><a href="#" id="button-navbar" class="control-link"><span class="glyphicon glyphicon-chevron-right" ></span></a>
                                     </div>
                                     <div class="nav navbar-nav" role="group" id="navbar-ctrl">
-                                        <form id="search-form" action="index.php"  method="get">
-                                            <input type="text" value="" id="searchID" name="search" placeholder="Search">
-                                            <input type="checkbox"  name="byName"   checked  >By Name
-                                            <input type="checkbox"  name="byGender"  checked >By Gender
-                                            <input hidden type="submit" value="search">
-                                        </form>
                                         <a href="create.php" class="navbar-btn btn btn-info" ><span class="glyphicon glyphicon-plus-sign"></span> Add Item</a>
                                         <a href="trash-item.php" class="navbar-btn btn btn-warning"><span class='glyphicon glyphicon-trash'></span> Trash Item</a>
                                         <a href="pdf.php" class="navbar-btn btn btn-success ">PDF</a>
@@ -154,7 +149,7 @@ if(isset($_REQUEST['search']) ) {
                                 <th>Serial</th>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Gender</th>
+                                <th>Picture</th>
                                 <th colspan="4">Action</th>
                             </tr>
                             <?php
@@ -163,7 +158,7 @@ if(isset($_REQUEST['search']) ) {
                                 echo "<td>$serial</td>";
                                 echo "<td>$oneData->id</td>";
                                 echo "<td>$oneData->name</td>";
-                                echo "<td>$oneData->gender</td>";
+                                echo "<td><img src='$oneData->profile_image' alt='' class='table_image'></td>";
                                 echo " <td>
                                             <a href='view.php?id=$oneData->id' class='btn btn-info btn-sm'><span class='glyphicon glyphicon-eye-open'></span> View</a>
                                             </td>
@@ -208,16 +203,16 @@ if(isset($_REQUEST['search']) ) {
 
                                         $pageMinusOne  = $page-1;
                                         $pagePlusOne  = $page+1;
-                                        if($page>$pages) Utility::redirect("trash-item.php?Page=$pages");
+                                        if($page>$pages) Utility::redirect("index.php?Page=$pages");
 
-                                        if($page>1)  echo "<li><a href='trash-item.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
+                                        if($page>1)  echo "<li><a href='index.php?Page=$pageMinusOne'>" . "Previous" . "</a></li>";
                                         for($i=1;$i<=$pages;$i++)
                                         {
                                             if($i==$page) echo '<li class="active"><a href="">'. $i . '</a></li>';
                                             else  echo "<li><a href='?Page=$i'>". $i . '</a></li>';
 
                                         }
-                                        if($page<$pages) echo "<li><a href='trash-item.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
+                                        if($page<$pages) echo "<li><a href='index.php?Page=$pagePlusOne'>" . "Next" . "</a></li>";
 
                                         ?>
 
