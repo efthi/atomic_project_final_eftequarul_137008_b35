@@ -1,19 +1,18 @@
-
-LAB EXAM 06
+Final Atomic Project
 ===================
-Created By [Efthaqur Alam](http://efthaqur.mynetwall.info/)
+Submitted By [Efthaqur Alam](http://efthaqur.mynetwall.info/)
 
-Date 05 November 2016
+Date 26 November 2016
 ----------
 > MD EFTEQUARUL ALAM   SEIP 137008 Batch - B35   Web Application PHP
 
-Session 22
+Session 31
 -------------
 
-**LAB EXAM 06**
+**Atomic Final**
 
 > **Note:**
 
-> - **LAB EXAM Topic**
-> - Create Atomic Project Structure using Class and Composer, and and using PDO
-
+> - **Project Topic**
+> - Atomic Project Finalized (NOT INCLUDED 3RD PARTY VENDOR)
+> - 3RD PARTY FILES WERE SUBMITTED DIRECTLY TO TRAINER'S PENDRIVE
